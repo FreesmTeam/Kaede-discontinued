@@ -9,3 +9,15 @@ export function Close() {
 export function Greet(arg1) {
   return window['go']['main']['App']['Greet'](arg1);
 }
+
+export function Maximise() {
+  return window['go']['main']['App']['Maximise']();
+}
+
+export function Minimise() {
+  return window['go']['main']['App']['Minimise']();
+}
+
+export function Unmaximise() {
+  return window['go']['main']['App']['Unmaximise']();
+}
