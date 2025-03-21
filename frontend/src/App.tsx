@@ -1,11 +1,11 @@
-import {useState} from 'react';
+import React, { useState } from 'react';
 import logo from './assets/images/logo-universal.png';
-import {Greet} from "../wailsjs/go/main/App";
+import { Greet } from "../wailsjs/go/main/App";
 
 function App() {
     const [resultText, setResultText] = useState("Please enter your name below 👇");
     const [name, setName] = useState('');
-    const updateName = (e: any) => setName(e.target.value);
+    const updateName = (e: React.ChangeEvent<HTMLInputElement>      ) => setName(e.target.value);
     const updateResultText = (result: string) => setResultText(result);
 
     function greet() {
@@ -21,7 +21,7 @@ function App() {
                 <button className="btn" onClick={greet}>Greet</button>
             </div>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
