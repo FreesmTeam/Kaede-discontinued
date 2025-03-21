@@ -12,7 +12,9 @@ function App() {
 
     return (
         <div id="App">
-            <div id="result" className="result">{resultText}</div>
+            <div id="result" className="result text-rose-200">
+                {resultText}
+            </div>
             <button className="bg-amber-900" onClick={greet}>
                 Greet
             </button>
