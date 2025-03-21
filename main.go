@@ -10,6 +10,7 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
+var launcherName string = "freesm-reloaded"
 
 func main() {
 	// Create an instance of the app structure
@@ -17,7 +18,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "myproject",
+		Title:  launcherName,
 		Width:  1024,
 		Height: 768,
 		AssetServer: &assetserver.Options{
