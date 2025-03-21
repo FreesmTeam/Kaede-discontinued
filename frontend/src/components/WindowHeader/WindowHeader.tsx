@@ -1,20 +1,23 @@
-import React from 'react';
-import { Close, Minimise, ToggleMaximise } from "../../../wailsjs/go/main/App";
+import React, { useState } from 'react';
+import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../wailsjs/go/main/App";
+import { ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
 
 export default function WindowHeader() {
+    const [maximised, setMaximised] = useState<boolean | null>(null);
+
     function close() {
-        Close().then();
+        windowClose().then();
     }
 
     function minimise() {
-        Minimise().then((isMinimised: boolean) => {
+        windowMinimise().then((isMinimised: boolean) => {
             console.log(isMinimised);
         });
     }
 
     function maximise() {
-        ToggleMaximise().then((isMaximised: boolean) => {
-            console.log(isMaximised);
+        windowToggleMaximise().then((isMaximised: boolean) => {
+            setMaximised(isMaximised);
         });
     }
     
@@ -30,7 +33,7 @@ export default function WindowHeader() {
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#700700] w-4 h-4 bg-[#ff5e54]"
                     >
-                        x
+                        <X size={12} />
                     </div>
                 </button>
                 <button
@@ -40,7 +43,7 @@ export default function WindowHeader() {
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#733e01] w-4 h-4 bg-[#ffbd2e]"
                     >
-                        -
+                        <Minus size={12} />
                     </div>
                 </button>
                 <button
@@ -50,7 +53,13 @@ export default function WindowHeader() {
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#01540d] w-4 h-4 bg-[#27c93f]"
                     >
-                        \
+                        {
+                            maximised ? (
+                                <ChevronsRightLeft size={14} />
+                            ) : (
+                                <ChevronsLeftRight size={14} />
+                            )
+                        }
                     </div>
                 </button>
             </div>
