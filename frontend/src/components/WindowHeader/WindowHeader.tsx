@@ -1,6 +1,5 @@
 import React from 'react';
-import { Close, Minimise, Maximise, Unmaximise } from "../../../wailsjs/go/main/App";
-import '../../style.css';
+import { Close, Minimise, ToggleMaximise } from "../../../wailsjs/go/main/App";
 
 export default function WindowHeader() {
     function close() {
@@ -8,20 +7,19 @@ export default function WindowHeader() {
     }
 
     function minimise() {
-        Minimise().then();
+        Minimise().then((isMinimised: boolean) => {
+            console.log(isMinimised);
+        });
     }
 
     function maximise() {
-        Maximise().then((isMaximised: boolean) => {
-            console.log(isMaximised);
-        });
-        Unmaximise().then((isMaximised: boolean) => {
+        ToggleMaximise().then((isMaximised: boolean) => {
             console.log(isMaximised);
         });
     }
     
     return (
-        <div>
+        <div className="flex justify-end">
             <div className="__global-no-drag flex w-fit">
                 <button
                     onClick={close}

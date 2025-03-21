@@ -5,8 +5,6 @@ export function Close():Promise<void>;
 
 export function Greet(arg1:string):Promise<string>;
 
-export function Maximise():Promise<boolean>;
+export function Minimise():Promise<boolean>;
 
-export function Minimise():Promise<void>;
-
-export function Unmaximise():Promise<boolean>;
+export function ToggleMaximise():Promise<boolean>;
