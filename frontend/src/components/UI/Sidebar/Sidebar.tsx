@@ -1,36 +1,43 @@
 import React from "react";
 import { sidebarButtons } from "../../../configs/sidebar";
+import { Link, useLocation } from "react-router-dom";
+import {pageRoutes} from "../../../configs/pages";
 
 export default function Sidebar() {
+    const pathname = useLocation().pathname;
+
     return (
         <div className="w-fit">
             <div className="flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-32px)] py-2">
                 <div className="flex flex-col gap-4 items-center">
                     {
                         sidebarButtons.map((button) => {
-                            if (button.default) {
+                            if (button.route === pathname) {
                                 return (
-                                    <button
+                                    <Link
                                         key={button.name}
-                                        className="cursor-pointer overflow-clip flex rounded-full bg-[#eb6f92] w-12 min-h-12 text-white justify-center items-center hover:bg-[#e74b77] transition"
+                                        to={button.route}
+                                        className="cursor-pointer overflow-clip flex rounded-full bg-[#eb6f92] w-12 min-h-12 text-white justify-center items-center hover:bg-[#d93b67] transition"
                                     >
                                         {button.icon}
-                                    </button>
+                                    </Link>
                                 );
                             }
 
                             return (
-                                <button
+                                <Link
                                     key={button.name}
-                                    className="cursor-pointer overflow-clip flex rounded-full w-12 min-h-12 text-zinc-600 justify-center items-center hover:bg-[#d9c9ee] hover:text-zinc-800 transition"
+                                    to={button.route}
+                                    className="cursor-pointer overflow-clip flex rounded-full w-12 min-h-12 text-white justify-center items-center hover:bg-[#303039] bg-[#202026] transition"
                                 >
                                     {button.icon}
-                                </button>
+                                </Link>
                             );
                         })
                     }
                 </div>
-                <button
+                <Link
+                    to={pageRoutes.account}
                     className="cursor-pointer overflow-clip flex rounded-full w-12 min-h-12 text-zinc-600 justify-center items-center hover:grayscale transition"
                 >
                     <img
@@ -38,7 +45,7 @@ export default function Sidebar() {
                         src="https://zen-auth.vercel.app/favicon.ico"
                         alt={"user's avatar"}
                     />
-                </button>
+                </Link>
             </div>
         </div>
     );
