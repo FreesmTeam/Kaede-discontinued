@@ -4,6 +4,7 @@ import Sidebar from "./components/UI/Sidebar/Sidebar";
 import {HashRouter, Link, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/home/page";
 import AccountPage from "./pages/account/page";
+import {pageRoutes} from "./configs/pages";
 
 function App() {
     const [resultText, setResultText] = useState("Please, click the button");
@@ -19,11 +20,21 @@ function App() {
                 <Sidebar/>
                 <div
                     className="border-t-[1px] border-l-[1px] border-[#303030] bg-black rounded-tl-md overflow-auto w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:my-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
-                    <Link to="/">Home</Link>
-                    <Link to="/account">Account</Link>
+                    <Link to={pageRoutes.home}>
+                        Home
+                    </Link>
+                    <Link to={pageRoutes.account}>
+                        Account
+                    </Link>
                     <Routes>
-                        <Route path="/" element={<HomePage/>} />
-                        <Route path="/account" element={<AccountPage/>} />
+                        <Route
+                            path={pageRoutes.home}
+                            element={<HomePage/>}
+                        />
+                        <Route
+                            path={pageRoutes.account}
+                            element={<AccountPage/>}
+                        />
                     </Routes>
                     <div id="result" className="result text-rose-900">
                         {resultText}
