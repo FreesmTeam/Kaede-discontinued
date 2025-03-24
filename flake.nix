@@ -6,7 +6,8 @@
   outputs =
     { self, nixpkgs }:
     let
-      goVersion = 24; # Change this to update the whole stack
+      goVersion = 24;
+      nodejsVersion = 23;
 
       supportedSystems = [
         "x86_64-linux"
@@ -29,6 +30,7 @@
     {
       overlays.default = final: prev: {
         go = final."go_1_${toString goVersion}";
+        nodejs = final."nodejs_${toString nodejsVersion}";
       };
 
       devShells = forEachSupportedSystem (
@@ -40,6 +42,17 @@
               gotools
               golangci-lint
               wails
+              gtk3
+              webkitgtk
+              nsis
+              upx
+              docker
+              gcc
+              nodejs
+              pkg-config
+              bun
+              typescript
+              vite
             ];
           };
         }
