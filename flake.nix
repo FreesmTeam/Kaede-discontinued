@@ -50,7 +50,7 @@
               gcc
               nodejs
               pkg-config
-              bun
+              npm
               typescript
               vite
             ];
