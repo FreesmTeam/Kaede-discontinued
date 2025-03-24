@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../wailsjs/go/main/App";
+import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../../wailsjs/go/main/App";
 import { ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
 
 export default function WindowHeader() {
@@ -35,7 +35,7 @@ export default function WindowHeader() {
             >
                 <button
                     onClick={minimise}
-                    className="__global-no-drag group flex justify-center items-center transition w-8"
+                    className="__global-no-drag group flex justify-center items-center transition cursor-pointer w-8"
                 >
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#733e01] w-4 h-4 bg-[#ebbcba]"
@@ -45,7 +45,7 @@ export default function WindowHeader() {
                 </button>
                 <button
                     onClick={maximise}
-                    className="__global-no-drag group flex justify-center items-center transition w-8"
+                    className="__global-no-drag group flex justify-center items-center transition cursor-pointer w-8"
                 >
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#01540d] w-4 h-4 bg-[#9ccfd8]"
@@ -61,7 +61,7 @@ export default function WindowHeader() {
                 </button>
                 <button
                     onClick={close}
-                    className='__global-no-drag group flex justify-center items-center transition w-8'
+                    className='__global-no-drag group flex justify-center items-center transition cursor-pointer w-8'
                 >
                     <div
                         className="flex justify-center items-center transition rounded-full text-transparent group-hover:text-[#700700] w-4 h-4 bg-[#eb6f92]"

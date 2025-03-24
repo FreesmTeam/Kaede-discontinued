@@ -11,7 +11,7 @@ function App() {
 
     return (
         <div id="App">
-            <div id="result" className="result text-rose-200">
+            <div id="result" className="result text-rose-900">
                 {resultText}
             </div>
             <button className="bg-amber-900" onClick={greet}>
