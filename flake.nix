@@ -39,6 +39,7 @@
               go
               gotools
               golangci-lint
+              wails
             ];
           };
         }
