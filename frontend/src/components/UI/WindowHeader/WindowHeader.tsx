@@ -25,7 +25,7 @@ export default function WindowHeader() {
             <div
                 className="select-none px-2 flex flex-nowrap justify-start gap-2 items-center w-fit">
                 <div className="font-semibold text-nowrap text-sm text-zinc-800">
-                    Freesm <span className="text-[#c4a7e7]">Reloaded</span>
+                    Freesm <span className="text-[#eb6f92]">Reloaded</span>
                 </div>
             </div>
             <div
