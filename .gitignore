@@ -3,3 +3,5 @@ build/bin
 node_modules
 frontend/dist
 .direnv
+package-lock.json
+package-lock.json.md5
