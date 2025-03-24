@@ -10,9 +10,7 @@ export default function WindowHeader() {
     }
 
     function minimise() {
-        windowMinimise().then((isMinimised: boolean) => {
-            console.log(isMinimised);
-        });
+        windowMinimise().then();
     }
 
     function maximise() {
