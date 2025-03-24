@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Greet } from "../wailsjs/go/main/App";
 import Sidebar from "./components/UI/Sidebar/Sidebar";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import {HashRouter, Link, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/home/page";
 import AccountPage from "./pages/account/page";
 
@@ -19,9 +19,11 @@ function App() {
                 <Sidebar/>
                 <div
                     className="border-t-[1px] border-l-[1px] border-[#303030] bg-black rounded-tl-md overflow-auto w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:my-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
+                    <Link to="/">Home</Link>
+                    <Link to="/account">Account</Link>
                     <Routes>
-                        <Route path="/" element={<HomePage/>}/>
-                        <Route path="/account" element={<AccountPage/>}/>
+                        <Route path="/" element={<HomePage/>} />
+                        <Route path="/account" element={<AccountPage/>} />
                     </Routes>
                     <div id="result" className="result text-rose-900">
                         {resultText}
@@ -30,7 +32,7 @@ function App() {
                         Greet
                     </button>
                     {
-                        Array.from({length: 100}).map((_, index) => {
+                        Array.from({ length: 100 }).map((_, index) => {
                             return (
                                 <div key={index}>
                                     lorem ipsum
