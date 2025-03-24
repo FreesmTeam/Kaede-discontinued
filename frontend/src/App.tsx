@@ -1,19 +1,10 @@
-import React, { useState } from 'react';
-import { Greet } from "../wailsjs/go/main/App";
+import React from 'react';
 import Sidebar from "./components/UI/Sidebar/Sidebar";
-import {HashRouter, Link, Route, Routes} from "react-router-dom";
-import HomePage from "./pages/home/page";
-import AccountPage from "./pages/account/page";
-import {pageRoutes} from "./configs/pages";
+import { HashRouter, Link } from "react-router-dom";
+import { pageRoutes } from "./configs/pages";
+import DefinedRoutes from "./components/Logic/DefinedRoutes";
 
 function App() {
-    const [resultText, setResultText] = useState("Please, click the button");
-    const updateResultText = (result: string) => setResultText(result);
-
-    function greet() {
-        Greet("wails победа").then(updateResultText);
-    }
-
     return (
         <HashRouter basename={"/"}>
             <div id="App" className="text-white flex h-[calc(100vh-32px)]">
@@ -26,31 +17,7 @@ function App() {
                     <Link to={pageRoutes.account}>
                         Account
                     </Link>
-                    <Routes>
-                        <Route
-                            path={pageRoutes.home}
-                            element={<HomePage/>}
-                        />
-                        <Route
-                            path={pageRoutes.account}
-                            element={<AccountPage/>}
-                        />
-                    </Routes>
-                    <div id="result" className="result text-rose-900">
-                        {resultText}
-                    </div>
-                    <button className="bg-amber-900 text-white" onClick={greet}>
-                        Greet
-                    </button>
-                    {
-                        Array.from({ length: 100 }).map((_, index) => {
-                            return (
-                                <div key={index}>
-                                    lorem ipsum
-                                </div>
-                            );
-                        })
-                    }
+                    <DefinedRoutes />
                 </div>
             </div>
         </HashRouter>

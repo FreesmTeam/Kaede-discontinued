@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../../wailsjs/go/main/App";
-import {ArrowLeft, ArrowRight, ChevronsLeftRight, ChevronsRightLeft, Minus, X} from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
 
 export default function WindowHeader() {
     const [maximised, setMaximised] = useState<boolean | null>(null);
