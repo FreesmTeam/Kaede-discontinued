@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../../wailsjs/go/main/App";
 import { ArrowLeft, ArrowRight, ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
+import {currentVersion} from "../../../configs/build";
 
 export default function WindowHeader() {
     const [maximised, setMaximised] = useState<boolean | null>(null);
@@ -53,8 +54,10 @@ export default function WindowHeader() {
             </div>
             <div
                 className="select-none px-2 flex flex-nowrap justify-start gap-2 items-center w-fit">
-                <div className="font-semibold text-nowrap text-sm text-white">
-                    Freesm <span className="text-[#eb6f92]">Reloaded</span>
+                <div className="font-semibold text-nowrap text-sm text-white flex items-center gap-1.5">
+                    Freesm
+                    <span className="text-[#eb6f92]">Reloaded</span>
+                    <span className="text-xs text-zinc-500">{currentVersion}</span>
                 </div>
             </div>
             <div

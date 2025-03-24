@@ -1,0 +1,1 @@
+export const currentVersion = "sosi/huy-1.0.0";
