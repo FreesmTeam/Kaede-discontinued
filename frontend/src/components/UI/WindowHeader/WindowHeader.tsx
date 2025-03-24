@@ -20,11 +20,11 @@ export default function WindowHeader() {
     }
     
     return (
-        <div className="flex flex-nowrap justify-between items-center gap-2 w-full h-8 bg-[#edf4ff]">
-            <div className="w-24"/>
+        <div className="flex flex-nowrap justify-between items-center gap-2 w-full h-8 bg-[#101013]">
+            <div className="w-24 bg-amber-900 h-full" onClick={() => window.history.back()} />
             <div
                 className="select-none px-2 flex flex-nowrap justify-start gap-2 items-center w-fit">
-                <div className="font-semibold text-nowrap text-sm text-zinc-800">
+                <div className="font-semibold text-nowrap text-sm text-white">
                     Freesm <span className="text-[#eb6f92]">Reloaded</span>
                 </div>
             </div>

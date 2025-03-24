@@ -3,8 +3,8 @@ import { sidebarButtons } from "../../../configs/sidebar";
 
 export default function Sidebar() {
     return (
-        <div className="sticky w-24 top-0 px-4 pb-2">
-            <div className="fixed flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-48px)] rounded-full bg-[#e0def4] py-2">
+        <div className="w-fit">
+            <div className="flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-32px)] py-2">
                 <div className="flex flex-col gap-4 items-center">
                     {
                         sidebarButtons.map((button) => {
