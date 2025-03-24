@@ -11,9 +11,9 @@ function App() {
     }
 
     return (
-        <div id="App" className="text-zinc-900 flex min-h-[calc(100vh-32px)]">
+        <div id="App" className="text-zinc-900 flex h-[calc(100vh-32px)]">
             <Sidebar />
-            <div>
+            <div className="__global-application w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:mb-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
                 <div id="result" className="result text-rose-900">
                     {resultText}
                 </div>

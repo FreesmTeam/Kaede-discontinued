@@ -9,6 +9,6 @@ export const sidebarButtons = [
     },
     {
         icon: <SettingsIcon />,
-        name: "Добавить сборку",
+        name: "Настройки",
     },
 ];

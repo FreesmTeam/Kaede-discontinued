@@ -2,12 +2,8 @@
 
 html {
     background-color: rgba(237, 244, 255, 1);
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-html::-webkit-scrollbar { 
-    display: none;
+    overflow-y: hidden;
+    height: 100vh;
 }
 
 body {
@@ -28,4 +24,8 @@ body {
 
 .__global-no-drag {
     --wails-draggable: no-drag;
+}
+
+.__global-application {
+    overflow-y: scroll;
 }
