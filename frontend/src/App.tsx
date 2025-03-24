@@ -11,15 +11,24 @@ function App() {
     }
 
     return (
-        <div id="App" className="flex h-[calc(100vh-32px)]">
+        <div id="App" className="text-zinc-900 flex min-h-[calc(100vh-32px)]">
             <Sidebar />
             <div>
                 <div id="result" className="result text-rose-900">
                     {resultText}
                 </div>
-                <button className="bg-amber-900" onClick={greet}>
+                <button className="bg-amber-900 text-white" onClick={greet}>
                     Greet
                 </button>
+                {
+                    Array.from({ length: 100 }).map((_, index) => {
+                        return (
+                            <div key={index}>
+                                lorem ipsum
+                            </div>
+                        );
+                    })
+                }
             </div>
         </div>
     );
