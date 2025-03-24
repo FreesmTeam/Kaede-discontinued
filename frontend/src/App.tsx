@@ -7,7 +7,6 @@ function App() {
 
     function greet() {
         Greet("wails победа").then(updateResultText);
-        console.log(window);
     }
 
     return (
