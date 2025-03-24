@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
+    "@tailwindcss/oxide-darwin-arm64": "^4.0.15",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.0.15",
     "@tailwindcss/postcss": "^4.0.15",
     "@tailwindcss/vite": "^4.0.15",
     "@types/react": "^18.3.20",
