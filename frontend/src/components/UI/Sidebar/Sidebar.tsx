@@ -30,17 +30,15 @@ export default function Sidebar() {
                         })
                     }
                 </div>
-                <div>
-                    <button
-                        className="cursor-pointer overflow-clip flex rounded-full w-12 min-h-12 text-zinc-600 justify-center items-center hover:grayscale transition"
-                    >
-                        <img
-                            className="w-12 h-12"
-                            src="https://zen-auth.vercel.app/favicon.ico"
-                            alt={"user's avatar"}
-                        />
-                    </button>
-                </div>
+                <button
+                    className="cursor-pointer overflow-clip flex rounded-full w-12 min-h-12 text-zinc-600 justify-center items-center hover:grayscale transition"
+                >
+                    <img
+                        className="w-12 h-12"
+                        src="https://zen-auth.vercel.app/favicon.ico"
+                        alt={"user's avatar"}
+                    />
+                </button>
             </div>
         </div>
     );
