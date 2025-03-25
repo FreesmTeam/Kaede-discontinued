@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { LaunchMinecraft } from "../../../wailsjs/go/main/App";
-import { useThemeStore } from "../../utils/Stores/ThemeStore";
-import { ThemeStoreType } from "../../types/Stores/ThemeStore.type";
+import ThemeOpacityCustomizer from "../../components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 
 export default function HomePage() {
-    const { theme, setTheme } = useThemeStore((state: ThemeStoreType) => state);
     const [launched, setLaunched] = useState(false);
     const [selectedFile, setSelectedFile] = useState<string>("");
     const [info, setInfo] = useState<string | null>(null);
@@ -50,54 +48,7 @@ export default function HomePage() {
                     </div>
                 )
             }
-            <div className="flex">
-                <input
-                    type="range"
-                    defaultValue={Number(
-                        theme.opacity.outside,
-                    ) * 100}
-                    onChange={(event) => {
-                        event.preventDefault();
-
-                        const opacityValue = Math.floor(
-                            Number(event.currentTarget.value),
-                        ) / 100;
-
-                        setTheme({
-                            colorScheme: theme.colorScheme,
-                            opacity: {
-                                inside: theme.opacity.inside,
-                                outside: opacityValue.toString(),
-                            },
-                        });
-                    }}
-                />
-                {theme.opacity.outside}
-            </div>
-            <div className="flex">
-                <input
-                    type="range"
-                    defaultValue={Number(
-                        theme.opacity.inside,
-                    ) * 100}
-                    onChange={(event) => {
-                        event.preventDefault();
-
-                        const opacityValue = Math.floor(
-                            Number(event.currentTarget.value),
-                        ) / 100;
-
-                        setTheme({
-                            colorScheme: theme.colorScheme,
-                            opacity: {
-                                outside: theme.opacity.outside,
-                                inside: opacityValue.toString(),
-                            },
-                        });
-                    }}
-                />
-                {theme.opacity.inside}
-            </div>
+            <ThemeOpacityCustomizer />
         </div>
     );
 }
