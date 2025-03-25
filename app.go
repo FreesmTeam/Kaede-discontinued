@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os/exec"
 
-    launcher "backend/launcher"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
+	launcher "myproject/backend/launcher"
 )
 
 type Result struct {
@@ -35,7 +35,6 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
 }
 
-
 func (a *App) LaunchMinecraft(path string) Result {
 	/*if path == "" {
 		return Result{1, "Path is not specified"}
@@ -43,11 +42,11 @@ func (a *App) LaunchMinecraft(path string) Result {
 
 	var javaBinary string = "java"
 
-    args := launcher.BuildArgs()
-    cmd := exec.Command(javaBinary, args...)
-    err := cmd.Start()
+	args := launcher.BuildArgs()
+	cmd := exec.Command(javaBinary, args...)
+	err := cmd.Start()
 
-    if err != nil {
+	if err != nil {
 		println("Error:", err.Error())
 	}
 

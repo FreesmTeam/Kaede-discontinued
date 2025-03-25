@@ -7,7 +7,6 @@ toolchain go1.24.1
 require github.com/wailsapp/wails/v2 v2.10.1
 
 require (
-	backend/launcher v0.0.0
 	github.com/bep/debounce v1.2.1 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
