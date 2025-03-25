@@ -1,11 +1,32 @@
-.idea/
-build/bin
-node_modules
-frontend/dist
+# Wails
 frontend/wailsjs
-.direnv
-package-lock.json
-package-lock.json.md5
+build/bin
 
-# temporary
-/logs/
+# frontend sht
+frontend/node_modules/
+frontend/dist/
+frontend/.svelte-kit/
+frontend/.vite/
+
+# ide sht
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ide sht
+.DS_Store
+Thumbs.db
+
+# tmp sht
+*.log
+*.tmp
+*.temp
+
+# Nix
+.direnv/
+result/
+
+# other tmp sht
+.cache/
+.tmp/
