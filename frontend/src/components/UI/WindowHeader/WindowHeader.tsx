@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as windowToggleMaximise } from "../../../../wailsjs/go/main/App";
 import { ArrowLeft, ArrowRight, ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
 import { currentVersion } from "../../../configs/build";
-import { ThemeContext } from "../../../utils/Contexts/ThemeContext";
+import { useThemeStore } from "../../../utils/Stores/ThemeStore";
 
 export default function WindowHeader() {
+    const theme = useThemeStore((state) => state.theme);
     const [maximised, setMaximised] = useState<boolean | null>(null);
 
     function close() {
@@ -31,7 +32,12 @@ export default function WindowHeader() {
     
     return (
         <>
-            <div className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 bg-[#101013f3]">
+            <div
+                className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8"
+                style={{
+                    backgroundColor: `rgba(16, 16, 19, ${theme.opacity.outside})`,
+                }}
+            >
                 <div className="w-24 h-full flex flex-nowrap gap-0">
                     <button
                         onClick={redirectBack}
