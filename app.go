@@ -42,7 +42,7 @@ func (a *App) LaunchMinecraft(path string) Result {
 
 	var javaBinary string = "java"
 
-	args := launcher.BuildArgs()
+	args := launcher.BuildArgs("F:\\llauncher\\Minecraft\\game")
 	cmd := exec.Command(javaBinary, args...)
 	err := cmd.Start()
 
