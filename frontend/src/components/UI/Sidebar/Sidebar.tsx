@@ -11,7 +11,7 @@ export default function Sidebar() {
 
     return (
         <div
-            className="w-fit rounded-bl-md transition"
+            className="w-fit rounded-bl-md transition ease-out duration-300"
             style={{
                 backgroundColor: `rgba(16, 16, 19, ${theme.opacity.outside})`,
             }}

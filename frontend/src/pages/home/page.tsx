@@ -54,7 +54,7 @@ export default function HomePage() {
                 colorScheme: theme.colorScheme,
                 opacity: {
                     inside: theme.opacity.inside,
-                    outside: "0.85",
+                    outside: "0.5",
                 },
             })}>
                 Assign outside opacity to 0.85

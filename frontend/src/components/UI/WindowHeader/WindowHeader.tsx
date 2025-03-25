@@ -34,7 +34,7 @@ export default function WindowHeader() {
     return (
         <>
             <div
-                className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 transition"
+                className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 transition ease-out duration-300"
                 style={{
                     backgroundColor: `rgba(16, 16, 19, ${theme.opacity.outside})`,
                 }}
