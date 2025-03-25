@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"syscall"
+	//"syscall"
 
-    win "github.com/lxn/win"
+    //win "github.com/lxn/win"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -23,8 +23,8 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
-    hwnd := win.FindWindow(nil, syscall.StringToUTF16Ptr("freesm-reloaded"))
-    win.SetWindowLong(hwnd, win.GWL_EXSTYLE, win.GetWindowLong(hwnd, win.GWL_EXSTYLE)|win.WS_EX_LAYERED)
+    //hwnd := win.FindWindow(nil, syscall.StringToUTF16Ptr("freesm-reloaded"))
+    //win.SetWindowLong(hwnd, win.GWL_EXSTYLE, win.GetWindowLong(hwnd, win.GWL_EXSTYLE)|win.WS_EX_LAYERED)
 }
 
 // Greet returns a greeting for the given name

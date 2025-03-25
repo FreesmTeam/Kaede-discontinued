@@ -7,7 +7,7 @@ export default function Sidebar() {
     const pathname = useLocation().pathname;
 
     return (
-        <div className="w-fit bg-[#101013] rounded-bl-md">
+        <div className="w-fit bg-[#101013aa] rounded-bl-md">
             <div className="flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-32px)] py-2">
                 <div className="flex flex-col gap-4 items-center">
                     {

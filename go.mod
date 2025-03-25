@@ -4,10 +4,7 @@ go 1.23.0
 
 toolchain go1.24.1
 
-require (
-	github.com/lxn/win v0.0.0-20210218163916-a377121e959e
-	github.com/wailsapp/wails/v2 v2.10.1
-)
+require github.com/wailsapp/wails/v2 v2.10.1
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
