@@ -10,6 +10,10 @@ export function Greet(arg1) {
   return window['go']['main']['App']['Greet'](arg1);
 }
 
+export function LaunchMinecraft(arg1) {
+  return window['go']['main']['App']['LaunchMinecraft'](arg1);
+}
+
 export function Minimise() {
   return window['go']['main']['App']['Minimise']();
 }

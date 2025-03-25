@@ -5,7 +5,6 @@ import (
 	"fmt"
 	//"syscall"
 
-    //win "github.com/lxn/win"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -23,13 +22,16 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
-    //hwnd := win.FindWindow(nil, syscall.StringToUTF16Ptr("freesm-reloaded"))
-    //win.SetWindowLong(hwnd, win.GWL_EXSTYLE, win.GetWindowLong(hwnd, win.GWL_EXSTYLE)|win.WS_EX_LAYERED)
 }
 
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
+}
+
+func (a *App) LaunchMinecraft(version string) string {
+    // mc launch logic
+    return fmt.Sprintf("Launched minecraft %s", version)
 }
 
 func (a *App) Close() {
