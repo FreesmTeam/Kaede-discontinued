@@ -9,8 +9,10 @@ function App() {
             <div id="App" className="text-white flex h-[calc(100vh-32px)]">
                 <Sidebar/>
                 <div
-                    className="border-t-[1px] border-l-[1px] border-[#303030] bg-black rounded-tl-md overflow-auto w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:my-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
-                    <DefinedRoutes />
+                    className="flex overflow-clip bg-[#101013] rounded-br-md w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:my-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
+                    <div className="w-full border-t-[1px] border-l-[1px] border-[#303030] bg-black rounded-tl-md overflow-auto">
+                        <DefinedRoutes />
+                    </div>
                 </div>
             </div>
         </HashRouter>

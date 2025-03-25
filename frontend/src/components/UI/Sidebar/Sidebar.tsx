@@ -1,13 +1,13 @@
 import React from "react";
 import { sidebarButtons } from "../../../configs/sidebar";
 import { Link, useLocation } from "react-router-dom";
-import {pageRoutes} from "../../../configs/pages";
+import { pageRoutes } from "../../../configs/pages";
 
 export default function Sidebar() {
     const pathname = useLocation().pathname;
 
     return (
-        <div className="w-fit">
+        <div className="w-fit bg-[#101013] rounded-bl-md">
             <div className="flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-32px)] py-2">
                 <div className="flex flex-col gap-4 items-center">
                     {

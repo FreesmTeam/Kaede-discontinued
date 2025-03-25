@@ -29,7 +29,7 @@ export default function WindowHeader() {
     }
     
     return (
-        <div className="flex flex-nowrap justify-between items-center gap-2 w-full h-8 bg-[#101013]">
+        <div className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 bg-[#101013]">
             <div className="w-24 h-full flex flex-nowrap gap-0">
                 <button
                     onClick={redirectBack}

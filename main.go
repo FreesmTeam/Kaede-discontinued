@@ -26,12 +26,14 @@ func main() {
 		MinWidth:  400,
 		MinHeight: 400,
 		Windows: &windows.Options{
-		    DisablePinchZoom: true,
+            DisablePinchZoom:                  true,
+		    WebviewIsTransparent:              true,
+            WindowIsTranslucent:               false,
 		},
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		BackgroundColour: &options.RGBA{R: 16, G: 16, B: 19, A: 255},
+		BackgroundColour: &options.RGBA{R: 0, G: 0, B: 0, A: 0},
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
