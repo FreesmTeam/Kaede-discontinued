@@ -7,18 +7,19 @@ import (
     "io/ioutil"
 )
 
-type Version struct {
-    ID string `json:"id"`
-    URL string `json:"url"`
+type Library struct {
+    Downloads struct {
+        Artifact struct {
+            Path string `json:"path"`
+        } `json:"artifact"`
+    } `json:"downloads"`
 }
 
-type VersionsData struct {
-    Versions []Version `json:"versions"`
+type LibrariesData struct {
+    Libraries []Library `json:"libraries"`
 }
 
-func GetVersions() VersionsData {
-    var url string = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
-
+func GetLibraries(url string) LibrariesData {
     apiClient := http.Client{
         Timeout: time.Second * 5,
     }
@@ -47,12 +48,12 @@ func GetVersions() VersionsData {
         println("Error:", readErr.Error())
     }
 
-    var versionsData VersionsData
-	jsonErr := json.Unmarshal(body, &versionsData)
+    var librariesData LibrariesData
+	jsonErr := json.Unmarshal(body, &librariesData)
 
     if jsonErr != nil {
         println("Error:", jsonErr.Error())
     }
 
-    return versionsData
+    return librariesData
 }
