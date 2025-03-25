@@ -53,7 +53,9 @@ export default function HomePage() {
             <div className="flex">
                 <input
                     type="range"
-                    defaultValue={theme.opacity.outside}
+                    defaultValue={Number(
+                        theme.opacity.outside,
+                    ) * 100}
                     onChange={(event) => {
                         event.preventDefault();
 
@@ -75,7 +77,9 @@ export default function HomePage() {
             <div className="flex">
                 <input
                     type="range"
-                    defaultValue={theme.opacity.inside}
+                    defaultValue={Number(
+                        theme.opacity.inside,
+                    ) * 100}
                     onChange={(event) => {
                         event.preventDefault();
 
