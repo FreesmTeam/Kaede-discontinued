@@ -33,15 +33,20 @@ export default function HomePage() {
                 className="rounded-md bg-rose-800 px-2 py-2 m-1"
                 accept=".jar"
                 onChange={handleFileChange}
-            ></input>
-
+            />
             <button
                 className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
                 onClick={launchMinecraft}
             >
-        LAUNCH
+                LAUNCH
             </button>
-            {launched && <div className="text-sm text-zinc-300">~ {info}</div>}
+            {
+                launched && (
+                    <div className="text-sm text-zinc-300">
+                        ~ {info}
+                    </div>
+                )
+            }
         </div>
     );
 }
