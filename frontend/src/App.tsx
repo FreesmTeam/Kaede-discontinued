@@ -9,8 +9,8 @@ function App() {
             <div id="App" className="text-white flex h-[calc(100vh-32px)]">
                 <Sidebar/>
                 <div
-                    className="flex overflow-clip bg-[#101013aa] rounded-br-md w-full [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-track]:my-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92aa]">
-                    <div className="w-full border-t-[1px] border-l-[1px] border-[#303030aa] bg-[#000000aa] rounded-tl-md overflow-auto">
+                    className="flex overflow-clip bg-[#10101388] rounded-br-md w-full">
+                    <div className="relative border-t-[1px] border-l-[1px] border-[#303030aa] w-full bg-[#101013bb] overflow-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]">
                         <DefinedRoutes />
                     </div>
                 </div>

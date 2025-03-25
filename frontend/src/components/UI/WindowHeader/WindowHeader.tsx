@@ -29,14 +29,14 @@ export default function WindowHeader() {
     }
     
     return (
-        <div className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 bg-[#101013aa]">
+        <div className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 bg-[#101013f3]">
             <div className="w-24 h-full flex flex-nowrap gap-0">
                 <button
                     onClick={redirectBack}
                     className="__global-no-drag group flex justify-center items-center transition cursor-pointer w-8"
                 >
                     <div
-                        className="flex justify-center items-center transition rounded-full text-white w-6 h-6 bg-[#202026] group-hover:bg-[#303039]"
+                        className="flex justify-center items-center transition rounded-full text-white w-6 h-6 bg-[#242428] group-hover:bg-[#303039]"
                     >
                         <ArrowLeft size={16} />
                     </div>
@@ -46,7 +46,7 @@ export default function WindowHeader() {
                     className="__global-no-drag group flex justify-center items-center transition cursor-pointer w-8"
                 >
                     <div
-                        className="flex justify-center items-center transition rounded-full text-white w-6 h-6 bg-[#202026] group-hover:bg-[#303039]"
+                        className="flex justify-center items-center transition rounded-full text-white w-6 h-6 bg-[#242428] group-hover:bg-[#303039]"
                     >
                         <ArrowRight size={16} />
                     </div>
