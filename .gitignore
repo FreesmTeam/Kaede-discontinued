@@ -6,3 +6,6 @@ frontend/wailsjs
 .direnv
 package-lock.json
 package-lock.json.md5
+
+# temporary
+/logs/
