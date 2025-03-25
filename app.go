@@ -3,10 +3,16 @@ package main
 import (
 	"context"
 	"fmt"
+
 	//"syscall"
 
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
+
+type Result struct {
+	Code    int
+	Message string
+}
 
 // App struct
 type App struct {
@@ -29,9 +35,13 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
 }
 
-func (a *App) LaunchMinecraft(version string) string {
-    // mc launch logic
-    return fmt.Sprintf("Launched minecraft %s", version)
+func (a *App) LaunchMinecraft(path string) Result {
+	if path == "" {
+		return Result{1, "Path is not specified"}
+	}
+
+	return Result{0, "Launched minecraft"}
+	// return fmt.Sprintf("Launched minecraft %s", path)
 }
 
 func (a *App) Close() {
