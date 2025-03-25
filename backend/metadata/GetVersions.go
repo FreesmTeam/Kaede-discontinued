@@ -9,6 +9,7 @@ import (
 
 type Version struct {
     ID string `json:"id"`
+    URL string `json:"url"`
 }
 
 type Data struct {
