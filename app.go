@@ -3,10 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"os/exec"
 
-	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 	launcher "myproject/backend/launcher"
+	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 type Result struct {
@@ -40,15 +39,7 @@ func (a *App) LaunchMinecraft(path string) Result {
 		return Result{1, "Path is not specified"}
 	}*/
 
-	var javaBinary string = "java"
-
-	args := launcher.BuildArgs("F:\\llauncher\\Minecraft\\game")
-	cmd := exec.Command(javaBinary, args...)
-	err := cmd.Start()
-
-	if err != nil {
-		println("Error:", err.Error())
-	}
+    go launcher.LaunchInstance()
 
 	return Result{0, fmt.Sprintf("Launched minecraft %s", path)}
 }
