@@ -3,9 +3,10 @@ import { Close as windowClose, Minimise as windowMinimise, ToggleMaximise as win
 import { ArrowLeft, ArrowRight, ChevronsLeftRight, ChevronsRightLeft, Minus, X } from 'lucide-react';
 import { currentVersion } from "../../../configs/build";
 import { useThemeStore } from "../../../utils/Stores/ThemeStore";
+import { ThemeStoreType } from "../../../types/Stores/ThemeStore.type";
 
 export default function WindowHeader() {
-    const theme = useThemeStore((state) => state.theme);
+    const theme = useThemeStore((state: ThemeStoreType) => state.theme);
     const [maximised, setMaximised] = useState<boolean | null>(null);
 
     function close() {

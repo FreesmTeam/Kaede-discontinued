@@ -1,6 +1,7 @@
 import { create } from 'zustand';
+import { ThemeStoreType } from "../../types/Stores/ThemeStore.type";
 
-export const useThemeStore = create((set) => ({
+export const useThemeStore = create<ThemeStoreType>((set) => ({
     theme: {
         colorScheme: "dark",
         opacity: {
