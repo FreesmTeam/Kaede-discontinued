@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
-const ThemeContext = createContext<{
+export const ThemeContext = createContext<{
     theme: {
         theme: string;
         opacity: {
