@@ -6,7 +6,7 @@ export const useThemeStore = create<ThemeStoreType>((set) => ({
         colorScheme: "dark",
         opacity: {
             inside: "0.5",
-            outside: "0.9",
+            outside: "0.95",
         },
     },
     setTheme: (theme: {

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { LaunchMinecraft } from "../../../wailsjs/go/main/App";
+import { useThemeStore } from "../../utils/Stores/ThemeStore";
+import { ThemeStoreType } from "../../types/Stores/ThemeStore.type";
 
 export default function HomePage() {
+    const { theme, setTheme } = useThemeStore((state: ThemeStoreType) => state);
     const [launched, setLaunched] = useState(false);
     const [selectedFile, setSelectedFile] = useState<string>("");
     const [info, setInfo] = useState<string | null>(null);
@@ -47,6 +50,24 @@ export default function HomePage() {
                     </div>
                 )
             }
+            <button onClick={() => setTheme({
+                colorScheme: theme.colorScheme,
+                opacity: {
+                    inside: theme.opacity.inside,
+                    outside: "0.85",
+                },
+            })}>
+                Assign outside opacity to 0.85
+            </button>
+            <button onClick={() => setTheme({
+                colorScheme: theme.colorScheme,
+                opacity: {
+                    inside: theme.opacity.inside,
+                    outside: "0.95",
+                },
+            })}>
+                Assign outside opacity to 0.95
+            </button>
         </div>
     );
 }
