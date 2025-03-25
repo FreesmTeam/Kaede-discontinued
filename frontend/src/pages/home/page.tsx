@@ -50,24 +50,50 @@ export default function HomePage() {
                     </div>
                 )
             }
-            <button onClick={() => setTheme({
-                colorScheme: theme.colorScheme,
-                opacity: {
-                    inside: theme.opacity.inside,
-                    outside: "0.5",
-                },
-            })}>
-                Assign outside opacity to 0.85
-            </button>
-            <button onClick={() => setTheme({
-                colorScheme: theme.colorScheme,
-                opacity: {
-                    inside: theme.opacity.inside,
-                    outside: "0.95",
-                },
-            })}>
-                Assign outside opacity to 0.95
-            </button>
+            <div className="flex">
+                <input
+                    type="range"
+                    defaultValue={theme.opacity.outside}
+                    onChange={(event) => {
+                        event.preventDefault();
+
+                        const opacityValue = Math.floor(
+                            Number(event.currentTarget.value),
+                        ) / 100;
+
+                        setTheme({
+                            colorScheme: theme.colorScheme,
+                            opacity: {
+                                inside: theme.opacity.inside,
+                                outside: opacityValue.toString(),
+                            },
+                        });
+                    }}
+                />
+                {theme.opacity.outside}
+            </div>
+            <div className="flex">
+                <input
+                    type="range"
+                    defaultValue={theme.opacity.inside}
+                    onChange={(event) => {
+                        event.preventDefault();
+
+                        const opacityValue = Math.floor(
+                            Number(event.currentTarget.value),
+                        ) / 100;
+
+                        setTheme({
+                            colorScheme: theme.colorScheme,
+                            opacity: {
+                                outside: theme.opacity.outside,
+                                inside: opacityValue.toString(),
+                            },
+                        });
+                    }}
+                />
+                {theme.opacity.inside}
+            </div>
         </div>
     );
 }
