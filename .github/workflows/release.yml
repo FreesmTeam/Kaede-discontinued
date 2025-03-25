@@ -47,6 +47,4 @@ jobs:
           draft: true
           prerelease: false
           files: |
-            Wails Build Linux freesm-reloaded.zip
-            Wails Build Windows freesm-reloaded.zip
-            Wails Build macOS freesm-reloaded.zip
+            freesm-reloaded.zip
