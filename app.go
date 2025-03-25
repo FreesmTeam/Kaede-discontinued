@@ -35,10 +35,8 @@ func (a *App) Greet(name string) string {
 }
 
 func (a *App) LaunchMinecraft(path string) Result {
-	/*if path == "" {
-		return Result{1, "Path is not specified"}
-	}*/
-
+    // implement library rules check
+    // so that only supported libraries will be used in launch args
     go launcher.LaunchInstance()
 
 	return Result{0, fmt.Sprintf("Launched minecraft %s", path)}
