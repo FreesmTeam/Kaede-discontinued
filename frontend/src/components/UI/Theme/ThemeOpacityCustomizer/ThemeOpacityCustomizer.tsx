@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useThrottle } from "@uidotdev/usehooks";
-import { useThemeStore } from "../../../../utils/Stores/ThemeStore";
-import { ThemeStoreType } from "../../../../types/Stores/ThemeStore.type";
+import { useThemeStore } from "@/utils/Stores/ThemeStore";
+import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 
 export default function ThemeOpacityCustomizer() {
     const { theme, setTheme } = useThemeStore((state: ThemeStoreType) => state);

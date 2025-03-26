@@ -1,6 +1,6 @@
 import { Home , SettingsIcon } from "lucide-react";
 import React from "react";
-import { pageRoutes } from "./pages";
+import { pageRoutes } from "@/configs/pages";
 
 export const sidebarButtons = [
     {

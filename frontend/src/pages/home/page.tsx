@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { LaunchMinecraft, GetAvailableVersions } from "../../../wailsjs/go/main/App";
-import ThemeOpacityCustomizer from "../../components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
+import { LaunchMinecraft, GetAvailableVersions } from "@/../wailsjs/go/main/App";
+import ThemeOpacityCustomizer from "@/components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 import KitaDance from "@/assets/media/kita-chan-kitaikuyo.webp";
 
 export default function HomePage() {

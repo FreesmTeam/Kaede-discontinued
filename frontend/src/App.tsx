@@ -1,9 +1,9 @@
 import React from 'react';
-import Sidebar from "./components/UI/Sidebar/Sidebar";
+import Sidebar from "@/components/UI/Sidebar/Sidebar";
 import { HashRouter } from "react-router-dom";
-import DefinedRoutes from "./components/Logic/DefinedRoutes";
-import { useThemeStore } from "./utils/Stores/ThemeStore";
-import { ThemeStoreType } from "./types/Stores/ThemeStore.type";
+import DefinedRoutes from "@/components/Logic/DefinedRoutes";
+import { useThemeStore } from "@/utils/Stores/ThemeStore";
+import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 
 function App() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);

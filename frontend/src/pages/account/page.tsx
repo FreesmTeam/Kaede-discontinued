@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Greet } from "../../../wailsjs/go/main/App";
+import { Greet } from "@/../wailsjs/go/main/App";
 
 export default function AccountPage() {
     const [resultText, setResultText] = useState("Please, click the button");

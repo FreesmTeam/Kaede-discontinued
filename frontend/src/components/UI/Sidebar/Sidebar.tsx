@@ -1,9 +1,9 @@
 import React from "react";
-import { sidebarButtons } from "../../../configs/sidebar";
+import { sidebarButtons } from "@/configs/sidebar";
 import { Link, useLocation } from "react-router-dom";
-import { pageRoutes } from "../../../configs/pages";
-import { useThemeStore } from "../../../utils/Stores/ThemeStore";
-import { ThemeStoreType } from "../../../types/Stores/ThemeStore.type";
+import { pageRoutes } from "@/configs/pages";
+import { useThemeStore } from "@/utils/Stores/ThemeStore";
+import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 
 export default function Sidebar() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);
