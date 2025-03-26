@@ -31,3 +31,5 @@ result/
 .cache/
 .tmp/
 logs/
+
+*.old
