@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	launcher "myproject/backend/launcher"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
@@ -34,10 +35,31 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
 }
 
-func (a *App) LaunchMinecraft(minecraftVersion string) Result {
+func (a *App) GetAvailableVersions(minecraftDirectory string) []string {
+    f, err := os.Open(minecraftDirectory)
+
+    defer func() { _ = f.Close() }()
+
+    if err != nil {
+    	println("Error:", err.Error())
+    }
+
+    fns, err := f.Readdirnames(10000)
+
+    if err != nil {
+        println("Error:", err.Error())
+    }
+
+    return fns
+}
+
+func (a *App) LaunchMinecraft(
+    minecraftVersion string,
+    minecraftDirectory string,
+) Result {
     // implement library rules check
     // so that only supported libraries will be used in launch args
-    go launcher.LaunchInstance(minecraftVersion)
+    go launcher.LaunchInstance(minecraftVersion, minecraftDirectory)
 
 	return Result{0, "Launched minecraft " + minecraftVersion}
 }

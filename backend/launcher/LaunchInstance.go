@@ -4,10 +4,13 @@ import (
     "os/exec"
 )
 
-func LaunchInstance(minecraftVersion string) {
+func LaunchInstance(
+    minecraftVersion string,
+    minecraftDirectory string,
+) {
     var javaBinary string = "java"
 
-	args := BuildArgs("E:\\llauncher\\Minecraft\\game", minecraftVersion)
+	args := BuildArgs(minecraftDirectory, minecraftVersion)
 	err := exec.Command(javaBinary, args...).Start()
 
 	if err != nil {
