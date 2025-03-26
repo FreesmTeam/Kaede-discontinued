@@ -1,16 +1,16 @@
 package launcher
 
 import (
-    "os/exec"
+	"os/exec"
 )
 
 func LaunchInstance(
-    minecraftVersion string,
-    minecraftDirectory string,
+	minecraftVersion string,
+	minecraftDirectory string,
 ) {
-    var javaBinary string = "java"
+	var javaBinary string = "java"
 
-    println(
+	println(
         "~Minecraft launch process:",
         "\033[40m",
         "starting building launch args",
@@ -19,7 +19,7 @@ func LaunchInstance(
 
 	args := BuildArgs(minecraftDirectory, minecraftVersion)
 
-    println(
+	println(
         "~Minecraft launch process:",
         "\033[40m",
         "executing launch...",
