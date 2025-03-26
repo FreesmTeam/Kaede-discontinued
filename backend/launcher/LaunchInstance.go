@@ -4,11 +4,10 @@ import (
     "os/exec"
 )
 
-func LaunchInstance() {
+func LaunchInstance(minecraftVersion string) {
     var javaBinary string = "java"
 
-	args := BuildArgs("F:\\llauncher\\Minecraft\\game", "1.16.5")
-	println(args)
+	args := BuildArgs("E:\\llauncher\\Minecraft\\game", minecraftVersion)
 	err := exec.Command(javaBinary, args...).Start()
 
 	if err != nil {

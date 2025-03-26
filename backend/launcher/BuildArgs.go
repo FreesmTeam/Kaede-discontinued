@@ -14,8 +14,9 @@ func BuildArgs(minecraftDirectory string, minecraftVersion string) []string {
     var librariesData = metadata.GetLibraries(foundVersionLibrariesURL)
     var formattedLibraryNames = metadata.FormatLibraryNames(librariesData, librariesPath)
     var libraries = formattedLibraryNames + filepath.Join(minecraftDirectory, "versions", minecraftVersion, minecraftVersion + ".jar")
+    var natives = filepath.Join(minecraftDirectory, "versions", "1.16.5", "natives")
 
-	var libraryNativesPath string = "-Djava.library.path=C:\\Users\\windstone\\AppData\\Roaming\\versions\\1.16.5\\natives"
+	var libraryNativesPath string = "-Djava.library.path=" + natives
 	var multiplayerWorkaround = []string{
 		"-Dminecraft.api.env=custom",
 		"-Dminecraft.api.auth.host=https://invalid.invalid",

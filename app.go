@@ -34,12 +34,12 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
 }
 
-func (a *App) LaunchMinecraft(path string) Result {
+func (a *App) LaunchMinecraft(minecraftVersion string) Result {
     // implement library rules check
     // so that only supported libraries will be used in launch args
-    go launcher.LaunchInstance()
+    go launcher.LaunchInstance(minecraftVersion)
 
-	return Result{0, fmt.Sprintf("Launched minecraft %s", path)}
+	return Result{0, "Launched minecraft " + minecraftVersion}
 }
 
 func (a *App) Close() {
