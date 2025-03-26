@@ -43,8 +43,8 @@ export default function HomePage() {
             </button>
             {
                 availableVersions && (
-                    <div>
-                        {selectedVersion}
+                    <div className="flex flex-col w-fit">
+                        Selected: {selectedVersion ?? "none"}
                         <select
                             value={selectedVersion ?? ""}
                             onChange={(event) => {

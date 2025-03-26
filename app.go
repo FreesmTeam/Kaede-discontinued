@@ -57,6 +57,8 @@ func (a *App) LaunchMinecraft(
     minecraftVersion string,
     minecraftDirectory string,
 ) Result {
+    println("~Minecraft launch process:", "starting go routine")
+
     // implement library rules check
     // so that only supported libraries will be used in launch args
     go launcher.LaunchInstance(minecraftVersion, minecraftDirectory)

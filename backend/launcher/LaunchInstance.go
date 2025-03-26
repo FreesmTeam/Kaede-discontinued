@@ -10,7 +10,12 @@ func LaunchInstance(
 ) {
     var javaBinary string = "java"
 
+    println("~Minecraft launch process:", "starting building launch args")
+
 	args := BuildArgs(minecraftDirectory, minecraftVersion)
+
+    println("~Minecraft launch process:", "executing launch...")
+
 	err := exec.Command(javaBinary, args...).Start()
 
 	if err != nil {

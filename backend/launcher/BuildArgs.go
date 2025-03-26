@@ -9,8 +9,13 @@ import (
 func BuildArgs(minecraftDirectory string, minecraftVersion string) []string {
     var librariesPath = filepath.Join(minecraftDirectory, "libraries")
 
+    println("~Minecraft launch process:", "fetching all minecraft versions")
+
     var versionsData = metadata.GetVersions()
     var foundVersionLibrariesURL = metadata.FindVersion(versionsData, minecraftVersion)
+
+    println("~Minecraft launch process:", "fetching version specified libraries paths")
+
     var librariesData = metadata.GetLibraries(foundVersionLibrariesURL)
     var formattedLibraryNames = metadata.FormatLibraryNames(librariesData, librariesPath)
     var libraries = formattedLibraryNames + filepath.Join(minecraftDirectory, "versions", minecraftVersion, minecraftVersion + ".jar")
