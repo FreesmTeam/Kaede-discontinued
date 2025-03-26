@@ -25,3 +25,17 @@ body {
 .__global-no-drag {
     --wails-draggable: no-drag;
 }
+
+.__global-animation-gradient {
+    animation: animation-gradient 1s infinite linear;
+}
+
+@keyframes animation-gradient {
+    from {
+        background-position: 0 center;
+    }
+
+    to {
+        background-position: 200% center;
+    }
+}

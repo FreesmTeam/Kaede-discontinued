@@ -65,7 +65,7 @@ export default function WindowHeader() {
                 <div
                     className="select-none flex flex-nowrap justify-start gap-2 items-center w-fit">
                     <div className="font-semibold text-nowrap text-sm text-white flex items-center gap-1.5">
-                        <span className="select-none text-[#eb6f92]">
+                        <span className="__global-animation-gradient select-none text-transparent bg-clip-text bg-[linear-gradient(to_right,#eb6f92,#f71e5b,#eb6f92)] bg-[length:200%_auto]">
                             {applicationName}
                         </span>
                         <span className="select-none text-xs text-zinc-500">{currentVersion}</span>
