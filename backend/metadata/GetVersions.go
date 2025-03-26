@@ -20,7 +20,7 @@ func GetVersions() VersionsData {
     var url string = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
     apiClient := http.Client{
-        Timeout: time.Second * 5,
+        Timeout: time.Second * 15,
     }
 
     req, err := http.NewRequest(http.MethodGet, url, nil)

@@ -57,7 +57,12 @@ func (a *App) LaunchMinecraft(
     minecraftVersion string,
     minecraftDirectory string,
 ) Result {
-    println("~Minecraft launch process:", "starting go routine")
+    println(
+        "~Minecraft launch process:",
+        "\033[40m",
+        "starting go routine",
+        "\033[0m",
+    )
 
     // implement library rules check
     // so that only supported libraries will be used in launch args

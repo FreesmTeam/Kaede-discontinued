@@ -21,7 +21,7 @@ type LibrariesData struct {
 
 func GetLibraries(url string) LibrariesData {
     apiClient := http.Client{
-        Timeout: time.Second * 5,
+        Timeout: time.Second * 15,
     }
 
     req, err := http.NewRequest(http.MethodGet, url, nil)
