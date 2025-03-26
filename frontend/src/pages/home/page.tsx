@@ -3,6 +3,7 @@ import { LaunchMinecraft, GetAvailableVersions } from "../../../wailsjs/go/main/
 import ThemeOpacityCustomizer from "../../components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 
 export default function HomePage() {
+    const [availableVersions, setAvailableVersions] = useState<Array<string>>([]);
     const [launched, setLaunched] = useState(false);
     const [info, setInfo] = useState<string | null>(null);
 
@@ -18,7 +19,7 @@ export default function HomePage() {
 
     function getAvailableVersions() {
         GetAvailableVersions("E:\\llauncher\\Minecraft\\game\\versions").then((response) => {
-            console.log(response);
+            setAvailableVersions(response);
         });
     }
 
@@ -33,7 +34,7 @@ export default function HomePage() {
                 className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
                 onClick={getAvailableVersions}
             >
-                GET VERSIONS
+                GET LOCAL VERSIONS
             </button>
             <button
                 className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
@@ -49,6 +50,15 @@ export default function HomePage() {
                 )
             }
             <ThemeOpacityCustomizer />
+            {
+                availableVersions.map((version) => {
+                    return (
+                        <div key={version}>
+                            {version}
+                        </div>
+                    );
+                })
+            }
         </div>
     );
 }
