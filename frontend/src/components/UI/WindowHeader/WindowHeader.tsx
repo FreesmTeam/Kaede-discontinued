@@ -65,10 +65,10 @@ export default function WindowHeader() {
                 <div
                     className="select-none flex flex-nowrap justify-start gap-2 items-center w-fit">
                     <div className="font-semibold text-nowrap text-sm text-white flex items-center gap-1.5">
-                        <span className="text-[#eb6f92]">
+                        <span className="select-none text-[#eb6f92]">
                             {applicationName}
                         </span>
-                        <span className="text-xs text-zinc-500">{currentVersion}</span>
+                        <span className="select-none text-xs text-zinc-500">{currentVersion}</span>
                     </div>
                 </div>
                 <div
