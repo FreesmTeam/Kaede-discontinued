@@ -17,11 +17,11 @@ func HomeDirectory() (string, error) {
 		if dataHome == "" {
 			dataHome = filepath.Join(os.Getenv("HOME"), ".local", "share")
 		}
-		return filepath.Join(dataHome, "SakuraLauncher"), nil
+		return filepath.Join(dataHome, "Kaede"), nil
 	case "windows":
-		return filepath.Join(os.Getenv("APPDATA"), "SakuraLauncher"), nil
+		return filepath.Join(os.Getenv("APPDATA"), "Kaede"), nil
 	case "darwin":
-		return filepath.Join(os.Getenv("HOME"), "Library", "Application Support", "SakuraLauncher"), nil
+		return filepath.Join(os.Getenv("HOME"), "Library", "Application Support", "Kaede"), nil
 	default:
 		return "", fmt.Errorf("unsupported OS: %s", arch)
 	}

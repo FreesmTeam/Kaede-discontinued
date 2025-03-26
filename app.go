@@ -7,7 +7,7 @@ import (
 
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 
-	launcher "sakura/backend/launcher"
+	launcher "kaede/backend/launcher"
 )
 
 type Result struct {
@@ -28,9 +28,9 @@ func NewApp() *App {
 // startup is called when the app starts. The context is saved
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
-	go mkHomeDirectory()
 	a.ctx = ctx
 
+	go mkHomeDirectory()
 }
 
 func mkHomeDirectory() {
@@ -64,6 +64,7 @@ func (a *App) GetAvailableVersions(minecraftDirectory string) []string {
 		println("Error:", err.Error())
 	}
 
+    // 10000 is here just to limit the directories amount to read
 	fns, err := f.Readdirnames(10000)
 
 	if err != nil {

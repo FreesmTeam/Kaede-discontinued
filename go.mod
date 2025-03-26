@@ -1,4 +1,4 @@
-module sakura
+module kaede
 
 go 1.23.0
 

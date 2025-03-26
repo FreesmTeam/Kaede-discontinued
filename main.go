@@ -11,7 +11,7 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
-var launcherName string = "sakura-launcher"
+var launcherName string = "kaede"
 
 func main() {
 	// Create an instance of the app structure

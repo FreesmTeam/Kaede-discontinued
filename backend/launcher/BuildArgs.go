@@ -3,7 +3,7 @@ package launcher
 import (
 	"path/filepath"
 
-	metadata "sakura/backend/metadata"
+	metadata "kaede/backend/metadata"
 )
 
 func BuildArgs(minecraftDirectory string, minecraftVersion string) []string {

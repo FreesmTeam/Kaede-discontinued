@@ -1,4 +1,4 @@
-name: Sakura Launcher Release
+name: Kaede Release
 
 on:
   workflow_dispatch:
@@ -14,13 +14,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: 'sakura-launcher'
+          - name: 'kaede'
             platform:  'linux/amd64'
             os: 'ubuntu-latest'
-          - name: 'sakura-launcher'
+          - name: 'kaede'
             platform:  'windows/amd64'
             os: 'windows-latest'
-          - name: 'sakura-launcher'
+          - name: 'kaede'
             platform:  'darwin/universal'
             os: 'macos-latest'
 
@@ -43,8 +43,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         id: create_release
         with:
-          name: Sakura Launcher
+          name: Kaede
           draft: true
           prerelease: false
           files: |
-            sakura-launcher.zip
+            kaede.zip
