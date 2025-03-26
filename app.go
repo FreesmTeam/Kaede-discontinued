@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	launcher "sakura/backend/launcher"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
+
+	launcher "sakura/backend/launcher"
 )
 
 type Result struct {
@@ -27,7 +28,26 @@ func NewApp() *App {
 // startup is called when the app starts. The context is saved
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
+	go mkHomeDirectory()
 	a.ctx = ctx
+
+}
+
+func mkHomeDirectory() {
+	path, err := launcher.HomeDirectory()
+
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+
+	err1 := os.MkdirAll(path, 0755)
+
+	if err1 != nil {
+		fmt.Println(err1.Error())
+		os.Exit(1)
+
+	}
 }
 
 // Greet returns a greeting for the given name
@@ -36,37 +56,37 @@ func (a *App) Greet(name string) string {
 }
 
 func (a *App) GetAvailableVersions(minecraftDirectory string) []string {
-    f, err := os.Open(minecraftDirectory)
+	f, err := os.Open(minecraftDirectory)
 
-    defer func() { _ = f.Close() }()
+	defer func() { _ = f.Close() }()
 
-    if err != nil {
-    	println("Error:", err.Error())
-    }
+	if err != nil {
+		println("Error:", err.Error())
+	}
 
-    fns, err := f.Readdirnames(10000)
+	fns, err := f.Readdirnames(10000)
 
-    if err != nil {
-        println("Error:", err.Error())
-    }
+	if err != nil {
+		println("Error:", err.Error())
+	}
 
-    return fns
+	return fns
 }
 
 func (a *App) LaunchMinecraft(
-    minecraftVersion string,
-    minecraftDirectory string,
+	minecraftVersion string,
+	minecraftDirectory string,
 ) Result {
-    println(
-        "~Minecraft launch process:",
-        "\033[40m",
-        "starting go routine",
-        "\033[0m",
-    )
+	println(
+		"~Minecraft launch process:",
+		"\033[40m",
+		"starting go routine",
+		"\033[0m",
+	)
 
-    // implement library rules check
-    // so that only supported libraries will be used in launch args
-    go launcher.LaunchInstance(minecraftVersion, minecraftDirectory)
+	// implement library rules check
+	// so that only supported libraries will be used in launch args
+	go launcher.LaunchInstance(minecraftVersion, minecraftDirectory)
 
 	return Result{0, "Launched minecraft " + minecraftVersion}
 }
