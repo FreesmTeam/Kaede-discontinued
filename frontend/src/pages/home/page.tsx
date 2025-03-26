@@ -51,6 +51,12 @@ export default function HomePage() {
                                 setSelectedVersion(event.target.value);
                             }}
                         >
+                            <option
+                                className="text-black"
+                                value={"null"}
+                            >
+                                Ничего не выбрано
+                            </option>
                             {
                                 availableVersions.map((version) => {
                                     return (

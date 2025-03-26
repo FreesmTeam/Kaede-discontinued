@@ -16,7 +16,8 @@ func LaunchInstance(
 
     println("~Minecraft launch process:", "executing launch...")
 
-	err := exec.Command(javaBinary, args...).Start()
+	cmd := exec.Command(javaBinary, args...)
+	err := cmd.Start()
 
 	if err != nil {
 		println("Error:", err.Error())
