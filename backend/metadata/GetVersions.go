@@ -5,6 +5,8 @@ import (
 	"io"
 	"net/http"
 	"time"
+
+	constants "kaede/backend/constants"
 )
 
 type Version struct {
@@ -29,7 +31,7 @@ func GetVersions() VersionsData {
 		println("Error:", err.Error())
 	}
 
-	req.Header.Set("User-Agent", "kaede")
+	req.Header.Set("User-Agent", constants.ApplicationName)
 
 	res, getErr := apiClient.Do(req)
 

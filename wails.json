@@ -7,7 +7,7 @@
   "frontend:dev:watcher": "bun run dev",
   "frontend:dev:serverUrl": "auto",
   "author": {
-    "name": "notwindstone",
+    "name": "FreesmTeam",
     "email": "notwindstone@gmail.com"
   }
 }

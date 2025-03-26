@@ -7,11 +7,12 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
+
+	constants "kaede/backend/constants"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
-var launcherName string = "kaede"
 
 func main() {
 	// Create an instance of the app structure
@@ -19,7 +20,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:     launcherName,
+		Title:     constants.ApplicationName,
 		Width:     800,
 		Height:    600,
 		Frameless: true,

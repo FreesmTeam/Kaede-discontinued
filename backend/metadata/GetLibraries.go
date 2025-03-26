@@ -5,6 +5,8 @@ import (
 	"io"
 	"net/http"
 	"time"
+
+	constants "kaede/backend/constants"
 )
 
 type Library struct {
@@ -30,7 +32,7 @@ func GetLibraries(url string) LibrariesData {
 		println("Error:", err.Error())
 	}
 
-	req.Header.Set("User-Agent", "kaede")
+	req.Header.Set("User-Agent", constants.ApplicationName)
 
 	res, getErr := apiClient.Do(req)
 

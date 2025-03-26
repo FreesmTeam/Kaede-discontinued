@@ -5,6 +5,8 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+
+	constants "kaede/backend/constants"
 )
 
 func HomeDirectory() (string, error) {
@@ -17,11 +19,11 @@ func HomeDirectory() (string, error) {
 		if dataHome == "" {
 			dataHome = filepath.Join(os.Getenv("HOME"), ".local", "share")
 		}
-		return filepath.Join(dataHome, "Kaede"), nil
+		return filepath.Join(dataHome, constants.ApplicationName), nil
 	case "windows":
-		return filepath.Join(os.Getenv("APPDATA"), "Kaede"), nil
+		return filepath.Join(os.Getenv("APPDATA"), constants.ApplicationName), nil
 	case "darwin":
-		return filepath.Join(os.Getenv("HOME"), "Library", "Application Support", "Kaede"), nil
+		return filepath.Join(os.Getenv("HOME"), "Library", "Application Support", constants.ApplicationName), nil
 	default:
 		return "", fmt.Errorf("unsupported OS: %s", arch)
 	}
