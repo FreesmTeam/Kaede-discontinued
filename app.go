@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	launcher "myproject/backend/launcher"
+	launcher "sakura/backend/launcher"
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

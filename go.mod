@@ -1,4 +1,4 @@
-module myproject
+module sakura
 
 go 1.23.0
 

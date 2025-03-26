@@ -1,4 +1,4 @@
-name: Freesm Reloaded Release
+name: Sakura Launcher Release
 
 on:
   workflow_dispatch:
@@ -14,13 +14,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'linux/amd64'
             os: 'ubuntu-latest'
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'windows/amd64'
             os: 'windows-latest'
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'darwin/universal'
             os: 'macos-latest'
 
@@ -43,8 +43,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         id: create_release
         with:
-          name: Freesm Reloaded
+          name: Sakura Launcher
           draft: true
           prerelease: false
           files: |
-            freesm-reloaded.zip
+            sakura-launcher.zip

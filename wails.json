@@ -1,7 +1,7 @@
 {
   "$schema": "https://wails.io/schemas/config.v2.json",
-  "name": "freesm-reloaded",
-  "outputfilename": "freesm-reloaded",
+  "name": "sakura-launcher",
+  "outputfilename": "sakura-launcher",
   "frontend:install": "bun install",
   "frontend:build": "bun run build",
   "frontend:dev:watcher": "bun run dev",

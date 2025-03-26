@@ -29,7 +29,7 @@ func GetVersions() VersionsData {
 		println("Error:", err.Error())
 	}
 
-	req.Header.Set("User-Agent", "freesm-reloaded")
+	req.Header.Set("User-Agent", "sakura-launcher")
 
 	res, getErr := apiClient.Do(req)
 

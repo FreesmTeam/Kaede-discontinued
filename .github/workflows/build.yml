@@ -1,4 +1,4 @@
-name: Freesm Reloaded Build
+name: Sakura Launcher Build
 
 on:
   push:
@@ -19,13 +19,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'linux/amd64'
             os: 'ubuntu-latest'
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'windows/amd64'
             os: 'windows-latest'
-          - name: 'freesm-reloaded'
+          - name: 'sakura-launcher'
             platform:  'darwin/universal'
             os: 'macos-latest'
 

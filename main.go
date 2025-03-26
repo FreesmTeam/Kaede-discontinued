@@ -11,7 +11,7 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
-var launcherName string = "freesm-reloaded"
+var launcherName string = "sakura-launcher"
 
 func main() {
 	// Create an instance of the app structure
