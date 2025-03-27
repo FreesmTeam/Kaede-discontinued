@@ -6,29 +6,29 @@ export const sidebarButtons = [
     [
         {
             icon: <Home />,
-            route: pageRoutes.home,
+            route: pageRoutes.home.path,
             name: "Главная",
         },
         {
             icon: <Library />,
-            route: pageRoutes.library,
+            route: pageRoutes.library.path,
             name: "Библиотека",
         },
         {
             icon: <Bell />,
-            route: pageRoutes.notifications,
+            route: pageRoutes.notifications.path,
             name: "Уведомления",
         },
         {
             icon: <SettingsIcon />,
-            route: pageRoutes.settings,
+            route: pageRoutes.settings.path,
             name: "Настройки",
         },
     ],
     [
         {
             icon: <UserRound />,
-            route: pageRoutes.account,
+            route: pageRoutes.account.path,
             name: "Аккаунт",
         },
     ],
