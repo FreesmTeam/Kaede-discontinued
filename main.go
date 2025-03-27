@@ -29,7 +29,6 @@ func main() {
 		Windows: &windows.Options{
             DisablePinchZoom:                  true,
 		    WebviewIsTransparent:              true,
-            WindowIsTranslucent:               true,
 		},
 		AssetServer: &assetserver.Options{
 			Assets: assets,
