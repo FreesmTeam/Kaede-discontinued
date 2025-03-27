@@ -43,7 +43,7 @@ export default function ThemeOpacityCustomizer() {
                         });
                     }}
                 />
-                {opacity.outside}
+                {debouncedOpacity.outside} {'<-'} {opacity.outside}
             </div>
             <div className="flex">
                 <input
@@ -66,7 +66,7 @@ export default function ThemeOpacityCustomizer() {
                         });
                     }}
                 />
-                {opacity.inside}
+                {debouncedOpacity.inside} {'<-'} {opacity.inside}
             </div>
         </>
     );
