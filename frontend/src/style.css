@@ -27,7 +27,7 @@ body {
 }
 
 .__global-animation-gradient {
-    animation: animation-gradient 1s infinite linear;
+    animation: animation-gradient 3s infinite linear;
 }
 
 @keyframes animation-gradient {
