@@ -11,11 +11,7 @@ import (
 	constants "kaede/backend/constants"
 )
 
-type LibrariesData struct {
-	Libraries []types.Library `json:"libraries"`
-}
-
-func GetLibraries(url string) LibrariesData {
+func GetLibraries(url string) types.LibrariesData {
 	apiClient := http.Client{
 		Timeout: time.Second * 15,
 	}
@@ -44,7 +40,7 @@ func GetLibraries(url string) LibrariesData {
 		println("Error:", readErr.Error())
 	}
 
-	var librariesData LibrariesData
+	var librariesData types.LibrariesData
 	jsonErr := json.Unmarshal(body, &librariesData)
 
 	if jsonErr != nil {

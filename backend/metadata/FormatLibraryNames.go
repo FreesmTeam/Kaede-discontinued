@@ -2,9 +2,11 @@ package metadata
 
 import (
 	"path/filepath"
+
+	types "kaede/backend/types"
 )
 
-func FormatLibraryNames(libraries LibrariesData, path string) string {
+func FormatLibraryNames(libraries types.LibrariesData, path string) string {
 	var librariesAsPath string = ""
 	var separator string = ";"
 
