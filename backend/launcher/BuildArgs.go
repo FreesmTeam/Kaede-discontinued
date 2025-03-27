@@ -1,9 +1,9 @@
 package launcher
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
-	"fmt"
 
 	metadata "kaede/backend/metadata"
 )
@@ -12,29 +12,29 @@ func BuildArgs(minecraftDirectory string, minecraftVersion string) []string {
 	var librariesPath = filepath.Join(minecraftDirectory, "libraries")
 
 	println(
-        "~Minecraft launch process:",
-        "\033[40m",
-        "fetching all minecraft versions",
-        "\033[0m",
-    )
+		"~Minecraft launch process:",
+		"\033[40m",
+		"fetching all minecraft versions",
+		"\033[0m",
+	)
 
 	var versionsData = metadata.GetVersions()
 	var foundVersionLibrariesURL = metadata.FindVersion(versionsData, minecraftVersion)
 
 	println(
-        "~Minecraft launch process:",
-        "\033[40m",
-        "fetching version specified libraries paths",
-        "\033[0m",
-    )
+		"~Minecraft launch process:",
+		"\033[40m",
+		"fetching version specified libraries paths",
+		"\033[0m",
+	)
 
 	var librariesData = metadata.GetLibraries(foundVersionLibrariesURL)
 	var formattedLibraryNames = metadata.FormatLibraryNames(librariesData, librariesPath)
 	var libraries = formattedLibraryNames + filepath.Join(minecraftDirectory, "versions", minecraftVersion, minecraftVersion+".jar")
 	var natives = filepath.Join(minecraftDirectory, "versions", minecraftVersion, "natives")
-    var assetsVersionArray = strings.Split(minecraftVersion, ".")
-    var assetsVersion string = fmt.Sprintf("%s.%s", assetsVersionArray[0], assetsVersionArray[1])
-println(assetsVersion)
+	var assetsVersionArray = strings.Split(minecraftVersion, ".")
+	var assetsVersion string = fmt.Sprintf("%s.%s", assetsVersionArray[0], assetsVersionArray[1])
+	println(assetsVersion)
 	var libraryNativesPath string = "-Djava.library.path=" + natives
 	var multiplayerWorkaround = []string{
 		"-Dminecraft.api.env=custom",

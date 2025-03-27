@@ -6,19 +6,13 @@ import (
 	"net/http"
 	"time"
 
+	types "kaede/backend/types"
+
 	constants "kaede/backend/constants"
 )
 
-type Library struct {
-	Downloads struct {
-		Artifact struct {
-			Path string `json:"path"`
-		} `json:"artifact"`
-	} `json:"downloads"`
-}
-
 type LibrariesData struct {
-	Libraries []Library `json:"libraries"`
+	Libraries []types.Library `json:"libraries"`
 }
 
 func GetLibraries(url string) LibrariesData {
