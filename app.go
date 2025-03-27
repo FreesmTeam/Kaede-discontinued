@@ -64,7 +64,7 @@ func (a *App) GetAvailableVersions(minecraftDirectory string) []string {
 		println("Error:", err.Error())
 	}
 
-    // 10000 is here just to limit the directories amount to read
+	// 10000 is here just to limit the directories amount to read
 	fns, err := f.Readdirnames(10000)
 
 	if err != nil {

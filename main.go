@@ -6,9 +6,9 @@ import (
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
-	"github.com/wailsapp/wails/v2/pkg/options/windows"
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
+	"github.com/wailsapp/wails/v2/pkg/options/windows"
 
 	constants "kaede/backend/constants"
 )
@@ -29,17 +29,17 @@ func main() {
 		MinWidth:  400,
 		MinHeight: 400,
 		Windows: &windows.Options{
-            DisablePinchZoom:                  true,
-		    WebviewIsTransparent:              true,
-            WindowIsTranslucent:               true,
+			DisablePinchZoom:     true,
+			WebviewIsTransparent: true,
+			WindowIsTranslucent:  true,
 		},
-        Linux: &linux.Options{
-            WindowIsTranslucent:               true,
-        },
-        Mac: &mac.Options{
-		    WebviewIsTransparent:              true,
-            WindowIsTranslucent:               true,
-        },
+		Linux: &linux.Options{
+			WindowIsTranslucent: true,
+		},
+		Mac: &mac.Options{
+			WebviewIsTransparent: true,
+			WindowIsTranslucent:  true,
+		},
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

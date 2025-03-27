@@ -11,7 +11,6 @@ import (
 	types "kaede/backend/types"
 )
 
-
 func GetVersions() types.VersionsData {
 	var url string = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
