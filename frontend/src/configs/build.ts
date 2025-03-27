@@ -1,1 +1,1 @@
-export const currentVersion = "sosi/huy-1.0.0";
+export const currentVersion = "dev-0.0.0";
