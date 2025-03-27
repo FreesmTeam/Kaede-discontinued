@@ -15,9 +15,10 @@ function App() {
                 <div
                     className="flex overflow-clip rounded-br-md w-full">
                     <div
-                        className="transition ease-out duration-300 relative border-t-[1px] border-l-[1px] border-[#303030] w-full overflow-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]"
+                        className="transition ease-out duration-300 relative border-t-[1px] border-l-[1px] w-full overflow-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]"
                         style={{
                             backgroundColor: `rgba(25, 25, 29, ${theme.opacity.inside})`,
+                            borderColor: `rgba(48, 48, 48, ${theme.opacity.divider})`,
                         }}
                     >
                         <DefinedRoutes />

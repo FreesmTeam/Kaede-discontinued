@@ -16,6 +16,7 @@ export default function ThemeOpacityCustomizer() {
             opacity: {
                 outside: debouncedOpacity.outside,
                 inside: debouncedOpacity.inside,
+                divider: debouncedOpacity.divider,
             },
         });
     }, [debouncedOpacity]);
@@ -37,7 +38,7 @@ export default function ThemeOpacityCustomizer() {
 
                         setOpacity((prev) => {
                             return {
-                                inside: prev.inside,
+                                ...prev,
                                 outside: opacityValue.toString(),
                             };
                         });
@@ -60,13 +61,36 @@ export default function ThemeOpacityCustomizer() {
 
                         setOpacity((prev) => {
                             return {
+                                ...prev,
                                 inside: opacityValue.toString(),
-                                outside: prev.outside,
                             };
                         });
                     }}
                 />
                 {debouncedOpacity.inside} {'<-'} {opacity.inside}
+            </div>
+            <div className="flex">
+                <input
+                    type="range"
+                    defaultValue={Number(
+                        theme.opacity.divider,
+                    ) * 100}
+                    onChange={(event) => {
+                        event.preventDefault();
+
+                        const opacityValue = Math.floor(
+                            Number(event.currentTarget.value),
+                        ) / 100;
+
+                        setOpacity((prev) => {
+                            return {
+                                ...prev,
+                                divider: opacityValue.toString(),
+                            };
+                        });
+                    }}
+                />
+                {debouncedOpacity.divider} {'<-'} {opacity.divider}
             </div>
         </>
     );

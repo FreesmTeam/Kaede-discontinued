@@ -1,16 +1,13 @@
-export type ThemeStoreType = {
-    theme: {
-        colorScheme: string;
-        opacity: {
-            inside: string;
-            outside: string;
-        };
+type ThemeType = {
+    colorScheme: string;
+    opacity: {
+        inside: string;
+        outside: string;
+        divider: string;
     };
-    setTheme: (theme: {
-        colorScheme: string;
-        opacity: {
-            inside: string;
-            outside: string;
-        };
-    }) => void;
+};
+
+export type ThemeStoreType = {
+    theme: ThemeType,
+    setTheme: (theme: ThemeType) => void;
 };

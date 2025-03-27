@@ -7,6 +7,7 @@ export const useThemeStore = create<ThemeStoreType>((set) => ({
         opacity: {
             inside: "0.85",
             outside: "0.95",
+            divider: "1",
         },
     },
     setTheme: (theme: {
@@ -14,6 +15,7 @@ export const useThemeStore = create<ThemeStoreType>((set) => ({
         opacity: {
             inside: string;
             outside: string;
+            divider: string;
         };
     }) => set({ theme: theme }),
 }));
