@@ -1,4 +1,5 @@
 import { defineConfig } from "eslint/config";
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
@@ -10,6 +11,7 @@ export default defineConfig([
     { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"] },
     tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
+    eslintPluginUnicorn.configs.recommended,
     {
         rules: {
             semi: "error",
@@ -17,6 +19,8 @@ export default defineConfig([
             curly: "error",
             "object-curly-spacing": ["error", "always"],
             "comma-dangle": ["error", "always-multiline"],
+            "react/react-in-jsx-scope": ["off"],
+            "unicorn/filename-case": ["off"],
         },
     },
 ]);

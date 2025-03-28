@@ -1,4 +1,3 @@
-import React from "react";
 import { sidebarButtons } from "@/configs/sidebar";
 import { Link, useLocation } from "react-router-dom";
 import { useThemeStore } from "@/utils/Stores/ThemeStore";
