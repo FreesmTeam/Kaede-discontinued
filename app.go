@@ -7,6 +7,7 @@ import (
 
 	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 
+	data "kaede/backend/data"
 	launcher "kaede/backend/launcher"
 )
 
@@ -34,14 +35,14 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func mkHomeDirectory() {
-	path, err := launcher.HomeDirectory()
+	err := launcher.HomeDirectory()
 
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
 
-	err1 := os.MkdirAll(path, 0755)
+	err1 := os.MkdirAll(data.HomeDirectory, 0755)
 
 	if err1 != nil {
 		fmt.Println(err1.Error())
