@@ -7,24 +7,32 @@ import (
 	"runtime"
 
 	constants "kaede/backend/constants"
+	data "kaede/backend/data"
 )
 
-func HomeDirectory() (string, error) {
-	// btw thats OS
-	const arch string = runtime.GOOS
+var (
+	arch string = runtime.GOOS
+	path string
+)
 
+func HomeDirectory() error {
 	switch arch {
 	case "linux":
 		var dataHome string = os.Getenv("XDG_DATA_HOME")
+
 		if dataHome == "" {
 			dataHome = filepath.Join(os.Getenv("HOME"), ".local", "share")
 		}
-		return filepath.Join(dataHome, constants.ApplicationName), nil
+
+		data.HomeDirectory = filepath.Join(dataHome, constants.ApplicationName)
+		return nil
 	case "windows":
-		return filepath.Join(os.Getenv("APPDATA"), constants.ApplicationName), nil
+		data.HomeDirectory = filepath.Join(os.Getenv("APPDATA"), constants.ApplicationName)
 	case "darwin":
-		return filepath.Join(os.Getenv("HOME"), "Library", "Application Support", constants.ApplicationName), nil
+		data.HomeDirectory = filepath.Join(os.Getenv("HOME"), "Library", "Application Support", constants.ApplicationName)
 	default:
-		return "", fmt.Errorf("unsupported OS: %s", arch)
+		return fmt.Errorf("unsupported OS: %s", arch)
 	}
+
+	return nil
 }
