@@ -1,6 +1,6 @@
 package types
 
-type VersionsData struct {
+type VersionsManifest struct {
 	Latest struct {
 		Release  string `json:"release"`
 		Snapshot string `json:"snapshot"`
