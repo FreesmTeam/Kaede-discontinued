@@ -9,6 +9,7 @@ import (
 
 	data "kaede/backend/data"
 	launcher "kaede/backend/launcher"
+	meta "kaede/backend/meta"
 )
 
 type Result struct {
@@ -56,28 +57,24 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("fmt.Sprintf said that %s", name)
 }
 
-func (a *App) GetAvailableVersions(minecraftDirectory string) []string {
-	f, err := os.Open(minecraftDirectory)
+func (a *App) GetAvailableVersions() []string {
+	meta.ParseVersions()
 
-	defer func() { _ = f.Close() }()
+	ids := make([]string, 0, len(data.VersionsManifest.Versions))
+	for _, version := range data.VersionsManifest.Versions {
+		ids = append(ids, version.ID)
 
-	if err != nil {
-		println("Error:", err.Error())
 	}
+	return ids
+}
 
-	// 10000 is here just to limit the directories amount to read
-	fns, err := f.Readdirnames(10000)
-
-	if err != nil {
-		println("Error:", err.Error())
-	}
-
-	return fns
+func (a *App) DownloadMinecraft(version string) {
+	launcher.CreateInstance(version)
 }
 
 func (a *App) LaunchMinecraft(
 	minecraftVersion string,
-	minecraftDirectory string,
+	// minecraftDirectory string,
 ) Result {
 	println(
 		"~Minecraft launch process:",
@@ -88,7 +85,7 @@ func (a *App) LaunchMinecraft(
 
 	// implement library rules check
 	// so that only supported libraries will be used in launch args
-	go launcher.LaunchInstance(minecraftVersion, minecraftDirectory)
+	go launcher.LaunchInstance(minecraftVersion)
 
 	return Result{0, "Launched minecraft " + minecraftVersion}
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LaunchMinecraft, GetAvailableVersions } from "@/../wailsjs/go/main/App";
+import { LaunchMinecraft, DownloadMinecraft, GetAvailableVersions } from "@/../wailsjs/go/main/App";
 import ThemeOpacityCustomizer from "@/components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 import KitaDance from "@/assets/media/kita-chan-kitaikuyo.webp";
 
@@ -14,7 +14,7 @@ export default function HomePage() {
             return;
         }
 
-        LaunchMinecraft(selectedVersion, "E:\\llauncher\\Minecraft\\game").then((response: {
+        LaunchMinecraft(selectedVersion).then((response: {
             Code:    number;
             Message: string;
         }) => {
@@ -22,9 +22,16 @@ export default function HomePage() {
             setInfo(response.Message);
         });
     }
+    function downloadMinecraft() {
+        if (!selectedVersion) {
+            return;
+        }
+
+        DownloadMinecraft(selectedVersion)
+    }
 
     function getAvailableVersions() {
-        GetAvailableVersions("E:\\llauncher\\Minecraft\\game\\versions").then((response) => {
+        GetAvailableVersions().then((response) => {
             setAvailableVersions(response);
         });
     }
@@ -72,6 +79,12 @@ export default function HomePage() {
                                 })
                             }
                         </select>
+                        <button
+                            className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
+                            onClick={downloadMinecraft}
+                        >
+                            DOWNLOAD
+                        </button>
                         <button
                             className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
                             onClick={launchMinecraft}
