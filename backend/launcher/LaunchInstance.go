@@ -13,6 +13,7 @@ import (
 	constants "kaede/backend/constants"
 	data "kaede/backend/data"
 	types "kaede/backend/types"
+	utils "kaede/backend/utils"
 )
 
 func LaunchInstance(version string) error {
@@ -49,6 +50,8 @@ func LaunchInstance(version string) error {
 		"${launcher_name}":     constants.ApplicationName,
 		"${version_version}":   constants.ApplicationVersion,
 		"${natives_directory}": filepath.Join(instanceDir, "kaede", "natives"),
+		"${resolution_width}":  "800",
+		"${resolution_height}": "600",
 	}
 
 	var args []string
@@ -79,7 +82,7 @@ func LaunchInstance(version string) error {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	fmt.Println("### STARTING MINECRAFT")
+	fmt.Println("### STARTING MINECRAFT", args)
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("failed to run minecraft: %w", err)
 	}
@@ -104,15 +107,33 @@ func replacePlaceholders(s string, replacements map[string]string) string {
 }
 
 func extractArgs(args []interface{}) []string {
-	var result []string
+	osName := utils.GetOSName()
+	println(osName)
+
+    var result []string
 	for _, arg := range args {
 		if s, ok := arg.(string); ok {
 			result = append(result, s)
+
 			continue
 		}
 
 		if m, ok := arg.(map[string]interface{}); ok {
-			if values, ok := m["value"].([]interface{}); ok {
+		    if rules, ok := m["rules"].([]interface{}); ok && len(rules) > 0 {
+		        if rule, ok := rules[0].(map[string]interface{}); ok {
+                    if os, ok := rule["os"].(map[string]interface{}); ok {
+                        if name, ok := os["name"].(string); ok {
+                            if name != osName {
+                                if _, ok := m["value"].([]interface{}); ok {
+                                    var placeholder []interface{}
+
+                                    result = appendVal(result, placeholder)
+                                }
+                            }
+                        }
+                    }
+                }
+		    } else if values, ok := m["value"].([]interface{}); ok {
 				result = appendVal(result, values)
 			}
 		}
