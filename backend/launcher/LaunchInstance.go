@@ -38,15 +38,14 @@ func LaunchInstance(version string) error {
 	classPath := strings.Join(append(libPaths, filepath.Join(instanceDir, "client.jar")), ";")
 
 	replacements := map[string]string{
-	    "-cp":                  "",
-	    "${classpath}":         "",
+	    "${classpath}":         classPath,
 		"${auth_player_name}":  "kaede",
 		"${version_name}":      manifest.ID,
 		"${game_directory}":    instanceDir,
 		"${assets_root}":       filepath.Join(instanceDir, "kaede", "assets"),
-		"${assets_index_name}": manifest.ID,
+		"${assets_index_name}": manifest.AssetIndex.ID,
 		"${auth_uuid}":         uuid.NewString(),
-		"${auth_access_token}": "",
+		"${auth_access_token}": "0",
 		"${user_type}":         "offline",
 		"${version_type}":      "release",
 		"${launcher_name}":     constants.ApplicationName,
@@ -54,10 +53,12 @@ func LaunchInstance(version string) error {
 		"${natives_directory}": filepath.Join(instanceDir, "kaede", "natives"),
 		"${resolution_width}":  "800",
 		"${resolution_height}": "600",
+		"${clientid}":          "0",
+		"${auth_xuid}":         "0",
 	}
 
 	var args []string
-	args = append(args, "-cp", classPath)
+	//args = append(args, "-cp", classPath, "net.minecraft.client.main.Main")
 
 	if manifest.MinecraftArguments != "" {
 		legacyArgs := replacePlaceholders(manifest.MinecraftArguments, replacements)
