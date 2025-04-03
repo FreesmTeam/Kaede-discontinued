@@ -65,16 +65,16 @@ type VersionManifest struct {
 }
 
 type Library struct {
-    Downloads struct {
-        Artifact    Artifact            `json:"artifact"`
-        Classifiers map[string]Artifact `json:"classifiers"`
-    } `json:"downloads"`
-    Name    string `json:"name"`
-    Rules   []Rule `json:"rules,omitempty"`
-    Extract struct {
-        Exclude []string `json:"exclude,omitempty"`
-    } `json:"extract,omitempty"`
-    Natives map[string]string `json:"natives,omitempty"`
+	Downloads struct {
+		Artifact    Artifact            `json:"artifact"`
+		Classifiers map[string]Artifact `json:"classifiers"`
+	} `json:"downloads"`
+	Name    string `json:"name"`
+	Rules   []Rule `json:"rules,omitempty"`
+	Extract struct {
+		Exclude []string `json:"exclude,omitempty"`
+	} `json:"extract,omitempty"`
+	Natives map[string]string `json:"natives,omitempty"`
 }
 
 type Artifact struct {

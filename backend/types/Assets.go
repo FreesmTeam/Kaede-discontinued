@@ -1,7 +1,7 @@
 package types
 
 type AssetsIndex struct {
-  Objects map[string]Asset `json:"objects"`
+	Objects map[string]Asset `json:"objects"`
 }
 
 type Asset struct {

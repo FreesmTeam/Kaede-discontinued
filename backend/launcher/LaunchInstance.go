@@ -1,14 +1,14 @@
 package launcher
 
 import (
+	"bufio"
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
-	"context"
-	"bufio"
 
 	"github.com/google/uuid"
 
@@ -42,7 +42,7 @@ func LaunchInstance(version string, ctx context.Context) error {
 	classPath := strings.Join(append(libPaths, filepath.Join(instanceDir, "client.jar")), ";")
 
 	replacements := map[string]string{
-	    "${classpath}":         classPath,
+		"${classpath}":         classPath,
 		"${auth_player_name}":  "kaede",
 		"${version_name}":      manifest.ID,
 		"${game_directory}":    instanceDir,
@@ -63,8 +63,8 @@ func LaunchInstance(version string, ctx context.Context) error {
 
 	var args []string
 
-    // if you append these args in the end
-    // they will be ignored
+	// if you append these args in the end
+	// they will be ignored
 	args = append(args,
 		"-Dminecraft.api.env=custom",
 		"-Dminecraft.api.auth.host=https://kaede.kaede",
@@ -83,11 +83,11 @@ func LaunchInstance(version string, ctx context.Context) error {
 		gameArgs := processArgs(manifest.Arguments.Game, replacements)
 
 		if !strings.Contains(strings.Join(extractArgs(manifest.Arguments.Jvm), " "), "${classpath}") {
-		    args = append(args, "-cp", classPath, manifest.MainClass)
-            args = append(args, jvmArgs...)
+			args = append(args, "-cp", classPath, manifest.MainClass)
+			args = append(args, jvmArgs...)
 		} else {
-            args = append(args, jvmArgs...)
-            args = append(args, manifest.MainClass)
+			args = append(args, jvmArgs...)
+			args = append(args, manifest.MainClass)
 		}
 
 		args = append(args, gameArgs...)
@@ -95,10 +95,10 @@ func LaunchInstance(version string, ctx context.Context) error {
 
 	cmd := exec.Command("javaw", args...)
 
-    stdout, err := cmd.StdoutPipe()
-    if err != nil {
-        return fmt.Errorf("error creating stdout pipe bruh: %v", err)
-    }
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		return fmt.Errorf("error creating stdout pipe bruh: %v", err)
+	}
 
 	fmt.Println("### STARTING MINECRAFT")
 	if err := cmd.Start(); err != nil {
@@ -106,16 +106,16 @@ func LaunchInstance(version string, ctx context.Context) error {
 	}
 
 	scanner := bufio.NewScanner(stdout)
-    go func() {
-        for scanner.Scan() {
-            line := scanner.Text()
-            runtime.EventsEmit(ctx, "javaLogs", line)
-        }
+	go func() {
+		for scanner.Scan() {
+			line := scanner.Text()
+			runtime.EventsEmit(ctx, "javaLogs", line)
+		}
 
-        if err := cmd.Wait(); err != nil {
-            runtime.EventsEmit(ctx, "javaError", err.Error())
-        }
-    }()
+		if err := cmd.Wait(); err != nil {
+			runtime.EventsEmit(ctx, "javaError", err.Error())
+		}
+	}()
 
 	return nil
 }
@@ -138,7 +138,7 @@ func replacePlaceholders(s string, replacements map[string]string) string {
 func extractArgs(args []interface{}) []string {
 	osName := utils.GetOSName()
 
-    var result []string
+	var result []string
 	for _, arg := range args {
 		if s, ok := arg.(string); ok {
 			result = append(result, s)
@@ -148,26 +148,26 @@ func extractArgs(args []interface{}) []string {
 		m, ok := arg.(map[string]interface{})
 
 		if !ok {
-		    continue
+			continue
 		}
 
-        values, ok := m["value"].([]interface{})
+		values, ok := m["value"].([]interface{})
 
-        if !ok {
-            continue
-        }
+		if !ok {
+			continue
+		}
 
-        rules, ok := m["rules"].([]interface{})
+		rules, ok := m["rules"].([]interface{})
 
-        if ok && len(rules) > 0 {
-            if shouldIncludeLib(rules, osName) {
-                result = appendVal(result, values)
-            }
+		if ok && len(rules) > 0 {
+			if shouldIncludeLib(rules, osName) {
+				result = appendVal(result, values)
+			}
 
-            continue
-        }
+			continue
+		}
 
-        result = appendVal(result, values)
+		result = appendVal(result, values)
 	}
 	return result
 }
@@ -182,23 +182,23 @@ func appendVal(result []string, values []interface{}) []string {
 }
 
 func shouldIncludeLib(rules []interface{}, osName string) bool {
-    rule, ok := rules[0].(map[string]interface{})
+	rule, ok := rules[0].(map[string]interface{})
 
-    if !ok {
-        return false
-    }
+	if !ok {
+		return false
+	}
 
-    os, ok := rule["os"].(map[string]interface{})
+	os, ok := rule["os"].(map[string]interface{})
 
-    if !ok {
-        return false
-    }
+	if !ok {
+		return false
+	}
 
-    name, ok := os["name"].(string)
+	name, ok := os["name"].(string)
 
-    if !ok {
-        return false
-    }
+	if !ok {
+		return false
+	}
 
-    return name == osName
+	return name == osName
 }

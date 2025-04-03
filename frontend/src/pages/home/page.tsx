@@ -6,7 +6,6 @@ import MinecraftLogs from "@/components/UI/MinecraftLogs/MinecraftLogs";
 
 export default function HomePage() {
     const [availableVersions, setAvailableVersions] = useState<Array<string>>();
-    const [launched, setLaunched] = useState(false);
     const [info, setInfo] = useState<string>();
     const [selectedVersion, setSelectedVersion] = useState<string>();
 
@@ -19,7 +18,6 @@ export default function HomePage() {
             Code:    number;
             Message: string;
         }) => {
-            setLaunched((state) => !state);
             setInfo(response.Message);
         });
     }
@@ -28,7 +26,9 @@ export default function HomePage() {
             return;
         }
 
-        DownloadMinecraft(selectedVersion);
+        DownloadMinecraft(selectedVersion).then(() => {
+            setInfo("Downloaded minecraft");
+        });
     }
 
     function getAvailableVersions() {
@@ -106,13 +106,9 @@ export default function HomePage() {
                         </div>
                     )
                 }
-                {
-                    launched && (
-                        <div className="text-sm text-zinc-300">
-                            ~ {info}
-                        </div>
-                    )
-                }
+                <div className="text-sm text-zinc-300">
+                    ~ {info}
+                </div>
                 <ThemeOpacityCustomizer/>
                 {
                     availableVersions?.map((version) => {
