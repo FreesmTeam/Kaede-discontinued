@@ -6,12 +6,15 @@ import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 export default function Sidebar() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);
     const pathname = useLocation().pathname;
+    const isDark = theme.colorScheme === "dark";
 
     return (
         <div
             className="w-fit rounded-bl-md transition ease-out duration-300"
             style={{
-                backgroundColor: `rgba(16, 16, 19, ${theme.opacity.outside})`,
+                backgroundColor: isDark
+                    ? `rgba(16, 16, 19, ${theme.opacity.outside})`
+                    : `rgba(255, 255, 255, ${theme.opacity.outside})`,
             }}
         >
             <div className="flex flex-col gap-4 items-center justify-between w-16 h-full max-h-[calc(100vh-32px)] py-2">

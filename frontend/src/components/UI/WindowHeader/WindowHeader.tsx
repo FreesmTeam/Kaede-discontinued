@@ -25,6 +25,7 @@ function redirectForward() {
 export default function WindowHeader() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);
     const [maximised, setMaximised] = useState<boolean>();
+    const isDark = theme.colorScheme === "dark";
 
     function maximise() {
         windowToggleMaximise().then((isMaximised: boolean) => {
@@ -37,7 +38,9 @@ export default function WindowHeader() {
             <div
                 className="flex flex-nowrap justify-between items-center gap-2 w-full rounded-t-md h-8 transition ease-out duration-300"
                 style={{
-                    backgroundColor: `rgba(16, 16, 19, ${theme.opacity.outside})`,
+                    backgroundColor: isDark
+                        ? `rgba(16, 16, 19, ${theme.opacity.outside})`
+                        : `rgba(255, 255, 255, ${theme.opacity.outside})`,
                 }}
             >
                 <div className="w-24 h-full flex flex-nowrap gap-0">

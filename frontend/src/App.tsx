@@ -7,6 +7,7 @@ import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 
 function App() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);
+    const isDark = theme.colorScheme === "dark";
 
     return (
         <HashRouter basename={"/"}>
@@ -17,8 +18,12 @@ function App() {
                     <div
                         className="transition ease-out duration-300 relative border-t-[1px] border-l-[1px] w-full overflow-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#eb6f92]"
                         style={{
-                            backgroundColor: `rgba(25, 25, 29, ${theme.opacity.inside})`,
-                            borderColor: `rgba(48, 48, 48, ${theme.opacity.divider})`,
+                            backgroundColor: isDark
+                                ? `rgba(25, 25, 29, ${theme.opacity.inside})`
+                                : `rgba(200, 200, 200, ${theme.opacity.inside})`,
+                            borderColor: isDark
+                                ? `rgba(48, 48, 48, ${theme.opacity.divider})`
+                                : `rgba(150, 150, 150, ${theme.opacity.divider})`,
                         }}
                     >
                         <DefinedRoutes />

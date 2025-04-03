@@ -3,6 +3,7 @@ import { LaunchMinecraft, DownloadMinecraft, GetAvailableVersions } from "@/../w
 import ThemeOpacityCustomizer from "@/components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 import KitaDance from "@/assets/media/kita-chan-kitaikuyo.webp";
 import MinecraftLogs from "@/components/UI/MinecraftLogs/MinecraftLogs";
+import ThemeColorSchemeCustomized from "@/components/UI/Theme/ThemeColorSchemeCustomized/ThemeColorSchemeCustomized";
 
 export default function HomePage() {
     const [availableVersions, setAvailableVersions] = useState<Array<string>>();
@@ -109,6 +110,7 @@ export default function HomePage() {
                     ~ {info}
                 </div>
                 <ThemeOpacityCustomizer/>
+                <ThemeColorSchemeCustomized />
                 {
                     availableVersions?.map((version) => {
                         return (

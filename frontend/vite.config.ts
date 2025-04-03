@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 // eslint-disable-next-line
 // @ts-ignore
-import { resolve } from 'path';
+import { resolve } from 'path'; // eslint-disable-line
 // eslint-disable-next-line
 // @ts-ignore
 import tailwindcss from '@tailwindcss/vite';
@@ -17,7 +17,7 @@ export default defineConfig({
         alias: {
             // eslint-disable-next-line
             // @ts-ignore
-            '@': resolve(__dirname, 'src'),
+            '@': resolve(__dirname, 'src'),  // eslint-disable-line
         },
     },
 });
