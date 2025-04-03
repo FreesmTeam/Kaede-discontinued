@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "lint": "gofmt -w -s ./backend && gofmt -w -s app.go && gofmt -w -s main.go"
+  }
+}

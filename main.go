@@ -32,14 +32,14 @@ func main() {
 			WindowIsTranslucent:  true,
 		},
 		/*
-		Linux: &linux.Options{
-			WindowIsTranslucent: true,
-		},
-		Mac: &mac.Options{
-			WebviewIsTransparent: true,
-			WindowIsTranslucent:  true,
-		},
-        */
+			Linux: &linux.Options{
+				WindowIsTranslucent: true,
+			},
+			Mac: &mac.Options{
+				WebviewIsTransparent: true,
+				WindowIsTranslucent:  true,
+			},
+		*/
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
