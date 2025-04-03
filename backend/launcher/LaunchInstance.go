@@ -35,9 +35,10 @@ func LaunchInstance(version string) error {
 		libPaths = append(libPaths, filepath.Join(instanceDir, "kaede", "libs", lib.Downloads.Artifact.Path))
 	}
 
-	classPath := strings.Join(append(libPaths, filepath.Join(instanceDir, "client.jar")), ":")
+	classPath := strings.Join(append(libPaths, filepath.Join(instanceDir, "client.jar")), ";")
 
 	replacements := map[string]string{
+	    "${classpath}":         classPath,
 		"${auth_player_name}":  "kaede",
 		"${version_name}":      manifest.ID,
 		"${game_directory}":    instanceDir,
@@ -55,7 +56,6 @@ func LaunchInstance(version string) error {
 	}
 
 	var args []string
-	args = append(args, "-cp", classPath)
 
 	if manifest.MinecraftArguments != "" {
 		legacyArgs := replacePlaceholders(manifest.MinecraftArguments, replacements)
@@ -118,17 +118,14 @@ func extractArgs(args []interface{}) []string {
 			continue
 		}
 
+        // TODO: refactor this shit
 		if m, ok := arg.(map[string]interface{}); ok {
 		    if rules, ok := m["rules"].([]interface{}); ok && len(rules) > 0 {
 		        if rule, ok := rules[0].(map[string]interface{}); ok {
                     if os, ok := rule["os"].(map[string]interface{}); ok {
                         if name, ok := os["name"].(string); ok {
                             if name != osName {
-                                if _, ok := m["value"].([]interface{}); ok {
-                                    var placeholder []interface{}
-
-                                    result = appendVal(result, placeholder)
-                                }
+                                continue
                             }
                         }
                     }
