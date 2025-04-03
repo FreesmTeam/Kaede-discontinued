@@ -60,6 +60,14 @@ func LaunchInstance(version string) error {
 	var args []string
 	//args = append(args, "-cp", classPath, "net.minecraft.client.main.Main")
 
+	args = append(args,
+		"-Dminecraft.api.env=custom",
+		"-Dminecraft.api.auth.host=https://kaede.kaede",
+		"-Dminecraft.api.account.host=https://kaede.kaede",
+		"-Dminecraft.api.session.host=https://kaede.kaede",
+		"-Dminecraft.api.services.host=https://kaede.kaede",
+	)
+
 	if manifest.MinecraftArguments != "" {
 		legacyArgs := replacePlaceholders(manifest.MinecraftArguments, replacements)
 		args = append(args, manifest.MainClass)
@@ -72,14 +80,6 @@ func LaunchInstance(version string) error {
 		args = append(args, manifest.MainClass)
 		args = append(args, gameArgs...)
 	}
-
-	args = append(args,
-		"-Dminecraft.api.env=custom",
-		"-Dminecraft.api.auth.host=https://kaede.kaede",
-		"-Dminecraft.api.account.host=https://kaede.kaede",
-		"-Dminecraft.api.session.host=https://kaede.kaede",
-		"-Dminecraft.api.services.host=https://kaede.kaede",
-	)
 
 	cmd := exec.Command("java", args...)
 	cmd.Stdout = os.Stdout
