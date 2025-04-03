@@ -37,7 +37,6 @@ export default function HomePage() {
         });
     }
 
-    console.log('rendered');
     return (
         <div>
             <>

@@ -36,9 +36,9 @@ export default function ThemeOpacityCustomizer() {
                             Number(event.currentTarget.value),
                         ) / 100;
 
-                        setOpacity((prev) => {
+                        setOpacity((previous) => {
                             return {
-                                ...prev,
+                                ...previous,
                                 outside: opacityValue.toString(),
                             };
                         });
@@ -59,9 +59,9 @@ export default function ThemeOpacityCustomizer() {
                             Number(event.currentTarget.value),
                         ) / 100;
 
-                        setOpacity((prev) => {
+                        setOpacity((previous) => {
                             return {
-                                ...prev,
+                                ...previous,
                                 inside: opacityValue.toString(),
                             };
                         });
@@ -82,9 +82,9 @@ export default function ThemeOpacityCustomizer() {
                             Number(event.currentTarget.value),
                         ) / 100;
 
-                        setOpacity((prev) => {
+                        setOpacity((previous) => {
                             return {
-                                ...prev,
+                                ...previous,
                                 divider: opacityValue.toString(),
                             };
                         });

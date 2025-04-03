@@ -6,30 +6,30 @@ import { useThemeStore } from "@/utils/Stores/ThemeStore";
 import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
 import { applicationName } from "@/configs/application";
 
+function close() {
+    windowClose().then();
+}
+
+function minimise() {
+    windowMinimise().then();
+}
+
+function redirectBack() {
+    globalThis.history.back();
+}
+
+function redirectForward() {
+    globalThis.history.forward();
+}
+
 export default function WindowHeader() {
     const theme = useThemeStore((state: ThemeStoreType) => state.theme);
-    const [maximised, setMaximised] = useState<boolean | null>(null);
-
-    function close() {
-        windowClose().then();
-    }
-
-    function minimise() {
-        windowMinimise().then();
-    }
+    const [maximised, setMaximised] = useState<boolean>();
 
     function maximise() {
         windowToggleMaximise().then((isMaximised: boolean) => {
             setMaximised(isMaximised);
         });
-    }
-
-    function redirectBack() {
-        window.history.back();
-    }
-
-    function redirectForward() {
-        window.history.forward();
     }
     
     return (

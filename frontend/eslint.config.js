@@ -21,6 +21,9 @@ export default defineConfig([
             "comma-dangle": ["error", "always-multiline"],
             "react/react-in-jsx-scope": ["off"],
             "unicorn/filename-case": ["off"],
+            "unicorn/prefer-query-selector": ["off"],
+            "unicorn/prevent-abbreviations": ["off"],
+            "unicorn/no-abusive-eslint-disable": ["off"],
         },
     },
 ]);
