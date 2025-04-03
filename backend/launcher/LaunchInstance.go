@@ -7,8 +7,12 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"context"
+	"bufio"
 
 	"github.com/google/uuid"
+
+	runtime "github.com/wailsapp/wails/v2/pkg/runtime"
 
 	constants "kaede/backend/constants"
 	data "kaede/backend/data"
@@ -16,7 +20,7 @@ import (
 	utils "kaede/backend/utils"
 )
 
-func LaunchInstance(version string) error {
+func LaunchInstance(version string, ctx context.Context) error {
 	instanceDir := filepath.Join(data.HomeDirectory, "instances", "vanilla", version)
 	manifestPath := filepath.Join(instanceDir, "kaede", "version_manifest.json")
 
@@ -59,6 +63,8 @@ func LaunchInstance(version string) error {
 
 	var args []string
 
+    // if you append these args in the end
+    // they will be ignored
 	args = append(args,
 		"-Dminecraft.api.env=custom",
 		"-Dminecraft.api.auth.host=https://kaede.kaede",
@@ -88,14 +94,28 @@ func LaunchInstance(version string) error {
 	}
 
 	cmd := exec.Command("javaw", args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+
+    stdout, err := cmd.StdoutPipe()
+    if err != nil {
+        return fmt.Errorf("error creating stdout pipe bruh: %v", err)
+    }
 
 	fmt.Println("### STARTING MINECRAFT")
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Start(); err != nil {
 		return fmt.Errorf("failed to run minecraft: %w", err)
 	}
-	fmt.Println("### MINECRAFT EXITED")
+
+	scanner := bufio.NewScanner(stdout)
+    go func() {
+        for scanner.Scan() {
+            line := scanner.Text()
+            runtime.EventsEmit(ctx, "javaLogs", line)
+        }
+
+        if err := cmd.Wait(); err != nil {
+            runtime.EventsEmit(ctx, "javaError", err.Error())
+        }
+    }()
 
 	return nil
 }

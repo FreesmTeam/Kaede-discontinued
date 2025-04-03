@@ -85,7 +85,7 @@ func (a *App) LaunchMinecraft(
 
 	// implement library rules check
 	// so that only supported libraries will be used in launch args
-	go launcher.LaunchInstance(minecraftVersion)
+	go launcher.LaunchInstance(minecraftVersion, a.ctx)
 
 	return Result{0, "Launched minecraft " + minecraftVersion}
 }
