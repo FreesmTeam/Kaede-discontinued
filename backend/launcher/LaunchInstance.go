@@ -58,7 +58,6 @@ func LaunchInstance(version string) error {
 	}
 
 	var args []string
-	//args = append(args, "-cp", classPath, "net.minecraft.client.main.Main")
 
 	args = append(args,
 		"-Dminecraft.api.env=custom",
@@ -70,14 +69,20 @@ func LaunchInstance(version string) error {
 
 	if manifest.MinecraftArguments != "" {
 		legacyArgs := replacePlaceholders(manifest.MinecraftArguments, replacements)
-		args = append(args, manifest.MainClass)
+		args = append(args, "-cp", classPath, manifest.MainClass)
 		args = append(args, legacyArgs)
 	} else {
 		jvmArgs := processArgs(manifest.Arguments.Jvm, replacements)
 		gameArgs := processArgs(manifest.Arguments.Game, replacements)
 
-		args = append(args, jvmArgs...)
-		args = append(args, manifest.MainClass)
+		if !strings.Contains(strings.Join(extractArgs(manifest.Arguments.Jvm), " "), "${classpath}") {
+		    args = append(args, "-cp", classPath, manifest.MainClass)
+            args = append(args, jvmArgs...)
+		} else {
+            args = append(args, jvmArgs...)
+            args = append(args, manifest.MainClass)
+		}
+
 		args = append(args, gameArgs...)
 	}
 
@@ -85,7 +90,7 @@ func LaunchInstance(version string) error {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	fmt.Println("### STARTING MINECRAFT", args)
+	fmt.Println("### STARTING MINECRAFT")
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("failed to run minecraft: %w", err)
 	}
