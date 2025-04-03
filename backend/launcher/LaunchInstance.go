@@ -87,7 +87,7 @@ func LaunchInstance(version string) error {
 		args = append(args, gameArgs...)
 	}
 
-	cmd := exec.Command("java", args...)
+	cmd := exec.Command("javaw", args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
