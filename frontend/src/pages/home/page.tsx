@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { LaunchMinecraft, DownloadMinecraft, GetAvailableVersions } from "@/../wailsjs/go/main/App";
 import ThemeOpacityCustomizer from "@/components/UI/Theme/ThemeOpacityCustomizer/ThemeOpacityCustomizer";
 import KitaDance from "@/assets/media/kita-chan-kitaikuyo.webp";
+import MinecraftLogs from "@/components/UI/MinecraftLogs/MinecraftLogs";
 
 export default function HomePage() {
-    const [minecraftLogs, setMinecraftLogs] = useState<Array<string>>([]);
     const [availableVersions, setAvailableVersions] = useState<Array<string>>();
     const [launched, setLaunched] = useState(false);
     const [info, setInfo] = useState<string>();
@@ -21,7 +21,6 @@ export default function HomePage() {
         }) => {
             setLaunched((state) => !state);
             setInfo(response.Message);
-            setMinecraftLogs([]);
         });
     }
     function downloadMinecraft() {
@@ -38,34 +37,7 @@ export default function HomePage() {
         });
     }
 
-    useEffect(() => {
-        if (globalThis === undefined || !('runtime' in globalThis)) {
-            return;
-        }
-
-        // eslint-disable-next-line
-        // @ts-ignore
-        const runtime = globalThis.runtime;
-        const cleanup = runtime.EventsOn("javaLogs", (line: string) => {
-            setMinecraftLogs((previousLogs: string[]) => {
-                const updatedLogs = [...previousLogs, line];
-
-                return updatedLogs;
-            });
-        });
-
-        runtime.EventsOn("javaError", (error: string) => {
-            console.error("Java error:", error);
-        });
-
-        // Clean up listeners when component unmounts
-        return () => {
-            cleanup?.();
-            runtime.EventsOff("javaLogs");
-            runtime.EventsOff("javaError");
-        };
-    }, []);
-
+    console.log('rendered');
     return (
         <div>
             <>
@@ -74,17 +46,7 @@ export default function HomePage() {
                     alt="Kita oshi no ko dance gif"
                     src={KitaDance}
                 />
-                <div className="flex flex-col max-h-[30vh] overflow-auto">
-                    {
-                        minecraftLogs?.map((line: string) => {
-                            return (
-                                <div className="text-rose-100 text-sm" key={line}>
-                                    {line}
-                                </div>
-                            );
-                        })
-                    }
-                </div>
+                <MinecraftLogs />
                 <button
                     className="bg-rose-500 py-2 px-4 rounded-md mt-4 active:bg-rose-700 transition"
                     onClick={getAvailableVersions}
