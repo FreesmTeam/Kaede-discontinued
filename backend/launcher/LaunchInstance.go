@@ -111,32 +111,37 @@ func replacePlaceholders(s string, replacements map[string]string) string {
 
 func extractArgs(args []interface{}) []string {
 	osName := utils.GetOSName()
-	println(osName)
 
     var result []string
 	for _, arg := range args {
 		if s, ok := arg.(string); ok {
 			result = append(result, s)
-
 			continue
 		}
 
-        // TODO: refactor this shit
-		if m, ok := arg.(map[string]interface{}); ok {
-		    if rules, ok := m["rules"].([]interface{}); ok && len(rules) > 0 {
-		        if rule, ok := rules[0].(map[string]interface{}); ok {
-                    if os, ok := rule["os"].(map[string]interface{}); ok {
-                        if name, ok := os["name"].(string); ok {
-                            if name != osName {
-                                continue
-                            }
-                        }
-                    }
-                }
-		    } else if values, ok := m["value"].([]interface{}); ok {
-				result = appendVal(result, values)
-			}
+		m, ok := arg.(map[string]interface{})
+
+		if !ok {
+		    continue
 		}
+
+        values, ok := m["value"].([]interface{})
+
+        if !ok {
+            continue
+        }
+
+        rules, ok := m["rules"].([]interface{})
+
+        if ok && len(rules) > 0 {
+            if shouldIncludeLib(rules, osName) {
+                result = appendVal(result, values)
+            }
+
+            continue
+        }
+
+        result = appendVal(result, values)
 	}
 	return result
 }
@@ -148,4 +153,26 @@ func appendVal(result []string, values []interface{}) []string {
 		}
 	}
 	return result
+}
+
+func shouldIncludeLib(rules []interface{}, osName string) bool {
+    rule, ok := rules[0].(map[string]interface{})
+
+    if !ok {
+        return false
+    }
+
+    os, ok := rule["os"].(map[string]interface{})
+
+    if !ok {
+        return false
+    }
+
+    name, ok := os["name"].(string)
+
+    if !ok {
+        return false
+    }
+
+    return name == osName
 }
