@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useThrottle } from "@uidotdev/usehooks";
 import { useThemeStore } from "@/utils/Stores/ThemeStore";
 import { ThemeStoreType } from "@/types/Stores/ThemeStore.type";
+import { useThrottledValue } from "@mantine/hooks";
 
 export default function ThemeOpacityCustomizer() {
     const { theme, setTheme } = useThemeStore((state: ThemeStoreType) => state);
     const [opacity, setOpacity] = useState({
         ...theme.opacity,
     });
-    const debouncedOpacity = useThrottle(opacity, 200);
+    const debouncedOpacity = useThrottledValue(opacity, 200);
 
     useEffect(() => {
         setTheme({
