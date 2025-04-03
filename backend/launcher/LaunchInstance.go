@@ -70,6 +70,7 @@ func LaunchInstance(version string) error {
 	if manifest.MinecraftArguments != "" {
 		legacyArgs := replacePlaceholders(manifest.MinecraftArguments, replacements)
 		args = append(args, "-cp", classPath, manifest.MainClass)
+		args = append(args, "-Djava.library.path="+filepath.Join(instanceDir, "kaede", "natives"))
 		args = append(args, legacyArgs)
 	} else {
 		jvmArgs := processArgs(manifest.Arguments.Jvm, replacements)

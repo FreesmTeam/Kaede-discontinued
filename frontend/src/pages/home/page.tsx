@@ -67,6 +67,14 @@ export default function HomePage() {
                             </option>
                             {
                                 availableVersions.map((version) => {
+                                    if (
+                                        version.includes("w")
+                                        || version.includes("rc")
+                                        || version.toLowerCase().includes("pre")
+                                    ) {
+                                        return;
+                                    }
+
                                     return (
                                         <option
                                             className="text-black"
